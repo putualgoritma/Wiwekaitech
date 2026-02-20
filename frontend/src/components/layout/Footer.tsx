@@ -1,11 +1,13 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Container from '../shared/Container';
 import { SITE_NAME, SOCIAL_LINKS, NAVIGATION_LINKS } from '@/lib/constants';
 
 export default function Footer() {
   const t = useTranslations();
+  const locale = useLocale();
   const currentYear = new Date().getFullYear();
+  const buildHref = (href: string) => (href === '/' ? `/${locale}` : `/${locale}${href}`);
 
   return (
     <footer className="bg-neutral-900 text-gray-300 border-t border-neutral-800">
@@ -44,7 +46,7 @@ export default function Footer() {
                 {NAVIGATION_LINKS.slice(0, 4).map((link) => (
                   <li key={link.key}>
                     <Link
-                      href={link.href}
+                      href={buildHref(link.href)}
                       className="text-gray-400 hover:text-green-400 transition-colors"
                     >
                       {t(`nav.${link.key}`)}
@@ -61,7 +63,7 @@ export default function Footer() {
                 {NAVIGATION_LINKS.slice(4).map((link) => (
                   <li key={link.key}>
                     <Link
-                      href={link.href}
+                      href={buildHref(link.href)}
                       className="text-gray-400 hover:text-green-400 transition-colors"
                     >
                       {t(`nav.${link.key}`)}

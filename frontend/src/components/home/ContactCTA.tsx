@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Container from '../shared/Container';
@@ -9,6 +9,8 @@ import Button from '../shared/Button';
 
 export default function ContactCTA() {
   const t = useTranslations('contactCta');
+  const locale = useLocale();
+  const buildHref = (href: string) => `/${locale}${href}`;
 
   return (
     <Section className="bg-gradient-to-br from-green-400 to-green-600 text-white">
@@ -26,7 +28,7 @@ export default function ContactCTA() {
           <p className="text-lg text-white/90 mb-8">
             {t('subtitle')}
           </p>
-          <Link href="/contact">
+          <Link href={buildHref('/contact')}>
             <Button size="lg" variant="primary" className="bg-white text-black hover:bg-gray-100">
               {t('cta')}
             </Button>

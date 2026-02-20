@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Container from '../shared/Container';
@@ -9,6 +9,8 @@ import Button from '../shared/Button';
 
 export default function BlogPreview() {
   const t = useTranslations();
+  const locale = useLocale();
+  const buildHref = (href: string) => `/${locale}${href}`;
 
   const posts = [
     {
@@ -70,7 +72,7 @@ export default function BlogPreview() {
         </div>
 
         <div className="text-center">
-          <Link href="/blog">
+          <Link href={buildHref('/blog')}>
             <Button variant="primary">{t('blog.showAll')}</Button>
           </Link>
         </div>

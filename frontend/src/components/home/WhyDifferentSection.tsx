@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import Container from '../shared/Container';
 import Section from '../shared/Section';
@@ -9,6 +9,8 @@ import Link from 'next/link';
 
 export default function WhyDifferentSection() {
   const t = useTranslations('whyDifferent');
+  const locale = useLocale();
+  const buildHref = (href: string) => `/${locale}${href}`;
 
   const benefits = [
     {
@@ -113,7 +115,7 @@ export default function WhyDifferentSection() {
         </div>
 
         <div className="text-center">
-          <Link href="/about">
+          <Link href={buildHref('/about')}>
             <Button variant="primary">Learn More About Our Process</Button>
           </Link>
         </div>

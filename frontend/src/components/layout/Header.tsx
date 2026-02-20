@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { FaSun, FaMoon, FaBars } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import { useTheme } from 'next-themes';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Container from '../shared/Container';
 import LanguageSwitcher from './LanguageSwitcher';
 import { SITE_NAME } from '@/lib/constants';
@@ -22,6 +22,7 @@ const navItems = [
 
 export default function Header() {
   const t = useTranslations('nav');
+  const locale = useLocale();
   const [active, setActive] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,6 +40,8 @@ export default function Header() {
 
   if (!mounted) return null;
 
+  const buildHref = (href: string) => (href === '/' ? `/${locale}` : `/${locale}${href}`);
+
   return (
     <header
       className={`fixed top-0 w-full px-6 py-4 flex items-center justify-between z-50 transition-all duration-300
@@ -50,7 +53,11 @@ export default function Header() {
     >
       <Container className="flex items-center justify-between w-full">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group" onClick={() => setActive('home')}>
+        <Link
+          href={buildHref('/')}
+          className="flex items-center gap-3 group"
+          onClick={() => setActive('home')}
+        >
           {/* Modern Tech Logo */}
           <div className="relative w-10 h-10">
             {/* Outer glow effect */}
@@ -85,7 +92,7 @@ export default function Header() {
               onClick={() => setActive(item.name)}
             >
               <Link
-                href={item.href}
+                href={buildHref(item.href)}
                 className={`text-base font-medium ${active === item.name ? 'font-bold' : 'opacity-80'} hover:opacity-100`}
               >
                 {t(item.name)}
@@ -115,7 +122,7 @@ export default function Header() {
             )}
           </button>
 
-          <Link href="/contact">
+          <Link href={buildHref('/contact')}>
             <button className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold px-6 py-3 rounded-xl shadow hover:opacity-90 transition">
               {t('contact')}
             </button>
@@ -150,7 +157,7 @@ export default function Header() {
             {navItems.map((item) => (
               <Link
                 key={item.name}
-                href={item.href}
+                href={buildHref(item.href)}
                 className={`text-base font-medium ${active === item.name ? 'font-bold text-green-500' : 'opacity-80'}`}
                 onClick={() => {
                   setActive(item.name);
@@ -162,7 +169,7 @@ export default function Header() {
             ))}
             <LanguageSwitcher />
             <Link
-              href="/contact"
+              href={buildHref('/contact')}
               className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold px-4 py-2 rounded-xl shadow hover:opacity-90 transition text-center"
               onClick={() => setMenuOpen(false)}
             >

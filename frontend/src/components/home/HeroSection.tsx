@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -11,6 +11,8 @@ import Badge from '../shared/Badge';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
+  const locale = useLocale();
+  const buildHref = (href: string) => `/${locale}${href}`;
 
   return (
     <Section className="relative bg-white dark:bg-[#1E1E21] min-h-screen flex items-center overflow-hidden pt-24">
@@ -36,10 +38,10 @@ export default function HeroSection() {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
-              <Link href="/projects">
+              <Link href={buildHref('/projects')}>
                 <Button size="lg">{t('cta1')}</Button>
               </Link>
-              <Link href="/contact">
+              <Link href={buildHref('/contact')}>
                 <Button size="lg" variant="secondary">{t('cta2')}</Button>
               </Link>
             </div>

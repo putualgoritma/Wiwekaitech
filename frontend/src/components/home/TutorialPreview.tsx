@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Container from '../shared/Container';
@@ -10,6 +10,8 @@ import Button from '../shared/Button';
 
 export default function TutorialPreview() {
   const t = useTranslations();
+  const locale = useLocale();
+  const buildHref = (href: string) => `/${locale}${href}`;
 
   const tutorials = [
     {
@@ -87,7 +89,7 @@ export default function TutorialPreview() {
         </div>
 
         <div className="text-center">
-          <Link href="/tutorial">
+          <Link href={buildHref('/tutorial')}>
             <Button variant="primary">{t('tutorial.showAll')}</Button>
           </Link>
         </div>

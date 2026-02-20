@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -11,6 +11,8 @@ import Button from '../shared/Button';
 
 export default function ProjectsPreview() {
   const t = useTranslations();
+  const locale = useLocale();
+  const buildHref = (href: string) => `/${locale}${href}`;
 
   const projects = [
     {
@@ -128,7 +130,7 @@ export default function ProjectsPreview() {
         </div>
 
         <div className="text-center">
-          <Link href="/projects">
+          <Link href={buildHref('/projects')}>
             <Button variant="primary">{t('projects.showAll')}</Button>
           </Link>
         </div>
