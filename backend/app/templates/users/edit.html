@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Edit User - Wiwekaitech Admin{% endblock %}
+{% block content %}
+<div class="page-header"><h2>Edit User</h2></div>
+<form id="form" class="content-form">
+    <div class="form-group">
+        <label>Username: <input type="text" id="username" value="{{ edit_user.username }}" required></label>
+    </div>
+    <div class="form-group">
+        <label>Email: <input type="email" id="email" value="{{ edit_user.email }}" required></label>
+    </div>
+    <div class="form-group">
+        <label>Password (leave blank to keep): <input type="password" id="password"></label>
+    </div>
+    <div class="form-group">
+        <label>Role: 
+            <select id="role">
+                {% for r in roles %}
+                <option value="{{ r }}" {% if r == edit_user.role %}selected{% endif %}>{{ r }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="is_active" {% if edit_user.is_active %}checked{% endif %}> Active</label>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/admin/users" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+<script>
+const userId = {{ edit_user.id }};
+document.getElementById('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value || null,
+        role: document.getElementById('role').value,
+        is_active: document.getElementById('is_active').checked
+    };
+    try {
+        const response = await fetch(`/api/v1/admin/users/${userId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        if (response.ok) {
+            window.location.href = '/admin/users';
+        } else {
+            alert('Error updating user');
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});
+</script>
+{% endblock %}

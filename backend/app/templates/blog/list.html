@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Blog - Wiwekaitech Admin{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h2>Blog Posts</h2>
+    {% if user.role in ['admin', 'editor'] %}
+    <a href="/admin/blog/create" class="btn btn-primary">Add Post</a>
+    {% endif %}
+</div>
+{% if posts %}
+<div class="content-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Published</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.title_en }}</td>
+                <td>{{ post.author_name or '-' }}</td>
+                <td>{% if post.is_published %}<span class="badge badge-success">Yes</span>{% else %}<span class="badge badge-warning">No</span>{% endif %}</td>
+                <td><a href="/admin/blog/{{ post.id }}/edit" class="btn btn-sm btn-info">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No blog posts found.</p>
+{% endif %}
+{% endblock %}

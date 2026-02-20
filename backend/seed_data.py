@@ -8,8 +8,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime, timedelta
 from app.database import Base
-from app.models import Product, Project, Tutorial, BlogPost, Category
+from app.models import Product, Project, Tutorial, BlogPost, Category, User
 from app.config import settings
+from app.services.auth_service import AuthService
 
 # Create engine and tables
 engine = create_engine(settings.DATABASE_URL)
@@ -34,7 +35,38 @@ try:
     db.query(Project).delete()
     db.query(Product).delete()
     db.query(Category).delete()
+    db.query(User).delete()
     db.commit()
+    
+    # Create default admin user
+    print("🔄 Creating default admin user...")
+    admin_success, admin_msg, admin_user = AuthService.create_user(
+        db,
+        username="admin",
+        email="admin@wiwekaitech.com",
+        password="admin123",
+        role="admin"
+    )
+    
+    if admin_success:
+        print(f"✅ Admin user created: username=admin, password=admin123")
+    else:
+        print(f"❌ Failed to create admin user: {admin_msg}")
+    
+    # Create a demo editor user
+    print("🔄 Creating demo editor user...")
+    editor_success, editor_msg, editor_user = AuthService.create_user(
+        db,
+        username="editor",
+        email="editor@wiwekaitech.com",
+        password="editor123",
+        role="editor"
+    )
+    
+    if editor_success:
+        print(f"✅ Editor user created: username=editor, password=editor123")
+    else:
+        print(f"❌ Failed to create editor user: {editor_msg}")
     
     # Create categories for tutorials
     tutorial_cat = Category(

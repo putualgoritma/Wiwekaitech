@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Edit Blog Post - Wiwekaitech Admin{% endblock %}
+{% block content %}
+<div class="page-header"><h2>Edit Blog Post</h2></div>
+<form id="form" class="content-form">
+    <div class="form-group">
+        <label>Title (EN): <input type="text" id="title_en" value="{{ post.title_en }}" required></label>
+    </div>
+    <div class="form-group">
+        <label>Title (ID): <input type="text" id="title_id" value="{{ post.title_id }}" required></label>
+    </div>
+    <div class="form-group">
+        <label>Author: <input type="text" id="author_name" value="{{ post.author_name or '' }}"></label>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/admin/blog" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}

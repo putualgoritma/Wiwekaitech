@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Tutorials - Wiwekaitech Admin{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h2>Tutorials</h2>
+    {% if user.role in ['admin', 'editor'] %}
+    <a href="/admin/tutorials/create" class="btn btn-primary">Add Tutorial</a>
+    {% endif %}
+</div>
+{% if tutorials %}
+<div class="content-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Difficulty</th>
+                <th>Published</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tutorials %}
+            <tr>
+                <td>{{ t.title_en }}</td>
+                <td>{{ t.difficulty_level }}</td>
+                <td>{% if t.is_published %}<span class="badge badge-success">Yes</span>{% else %}<spanclass="badge badge-warning">No</span>{% endif %}</td>
+                <td><a href="/admin/tutorials/{{ t.id }}/edit" class="btn btn-sm btn-info">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No tutorials found.</p>
+{% endif %}
+{% endblock %}

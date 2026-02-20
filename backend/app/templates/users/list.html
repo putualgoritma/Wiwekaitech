@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Users - Wiwekaitech Admin{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h2>Admin Users</h2>
+    <a href="/admin/users/create" class="btn btn-primary">Add User</a>
+</div>
+{% if users %}
+<div class="content-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.username }}</td>
+                <td>{{ u.email }}</td>
+                <td><span class="badge badge-{{ u.role }}">{{ u.role }}</span></td>
+                <td>{% if u.is_active %}<span class="badge badge-success">Active</span>{% else %}<span class="badge badge-warning">Inactive</span>{% endif %}</td>
+                <td>
+                    <a href="/admin/users/{{ u.id }}/edit" class="btn btn-sm btn-info">Edit</a>
+                    {% if u.id != user.id %}
+                    <button class="btn btn-sm btn-danger" onclick="deleteUser({{ u.id }})">Delete</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No users found.</p>
+{% endif %}
+<script>
+async function deleteUser(userId) {
+    if (confirm('Delete this user?')) {
+        try {
+            await fetch(`/api/v1/admin/users/${userId}`, { method: 'DELETE' });
+            location.reload();
+        } catch (e) {
+            alert('Error: ' + e.message);
+        }
+    }
+}
+</script>
+{% endblock %}

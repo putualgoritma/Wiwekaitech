@@ -8,6 +8,11 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
     API_PREFIX: str = "/api/v1"
     
+    # JWT Configuration
+    JWT_SECRET_KEY: str = "your-secret-key-change-in-production"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRATION_HOURS: int = 24
+    
     @property
     def cors_origins_list(self) -> List[str]:
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]

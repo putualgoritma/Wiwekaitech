@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Edit Tutorial - Wiwekaitech Admin{% endblock %}
+{% block content %}
+<div class="page-header"><h2>Edit Tutorial</h2></div>
+<form id="form" class="content-form">
+    <div class="form-group">
+        <label>Title (EN): <input type="text" id="title_en" value="{{ tutorial.title_en }}" required></label>
+    </div>
+    <div class="form-group">
+        <label>Title (ID): <input type="text" id="title_id" value="{{ tutorial.title_id }}" required></label>
+    </div>
+    <div class="form-actions">
+        <button type="submit"class="btn btn-primary">Update</button>
+        <a href="/admin/tutorials" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}
