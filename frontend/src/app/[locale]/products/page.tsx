@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ProductsPageClient from '@/components/pages/ProductsPageClient';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
@@ -11,6 +11,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function ProductsPage() {
+export default function ProductsPage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   return <ProductsPageClient />;
 }

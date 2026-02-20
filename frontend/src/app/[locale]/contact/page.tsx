@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Container from '@/components/shared/Container';
@@ -15,7 +15,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function ContactPage() {
+export default function ContactPage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   const t = useTranslations('contact');
 
   return (

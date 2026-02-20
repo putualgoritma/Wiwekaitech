@@ -164,6 +164,116 @@
     "contact": {
       "title": "Hubungi Kami | Mulai Proyek ERP Anda | Wiwekaitech",
       "description": "Hubungi tim kami untuk diskusikan kebutuhan ERP custom atau software enterprise Anda. Konsultasi gratis tersedia."
+    },
+    "products": {
+      "erp": {
+        "title": "Pengembangan Software ERP Custom | Solusi Disesuaikan | Wiwekaitech",
+        "description": "Software ERP custom dibangun untuk alur kerja bisnis Anda. Sistem enterprise resource planning berbasis web dengan integrasi finance, inventory, HR, dan sales. Scalable, modular, siap integrasi."
+      }
+    }
+  },
+  "products": {
+    "erp": {
+      "hero": {
+        "title": "Software ERP Custom Dibangun untuk Bisnis Anda",
+        "subtitle": "Sistem enterprise resource planning end-to-end disesuaikan dengan alur kerja unik Anda — bukan template generik.",
+        "demo": "Minta Demo",
+        "sales": "Hubungi Sales"
+      },
+      "whatIs": {
+        "title": "Apa itu ERP?",
+        "description": "Enterprise Resource Planning (ERP) adalah sistem terpusat yang mengintegrasikan fungsi-fungsi bisnis kritis ke dalam satu platform terpadu. Ini menghilangkan data silo dan memungkinkan visibilitas real-time di seluruh organisasi Anda.",
+        "feature1": "Hub Data Terpusat",
+        "feature1Desc": "Satu sumber kebenaran untuk semua informasi bisnis",
+        "feature2": "Modul Terintegrasi",
+        "feature2Desc": "Finance, inventory, HR, penjualan, dan lainnya dalam satu sistem",
+        "feature3": "Visibilitas Real-Time",
+        "feature3Desc": "Dashboard live dan reporting di semua departemen",
+        "feature4": "Otomasi Bisnis",
+        "feature4Desc": "Hilangkan workflow manual dan kurangi kesalahan"
+      },
+      "whyNeed": {
+        "title": "Mengapa Bisnis Membutuhkan ERP",
+        "description": "Transformasi cara bisnis Anda beroperasi dengan sistem terpadu",
+        "reason1": "Hilangkan Data Silo",
+        "reason1Desc": "Hubungkan semua departemen di satu platform",
+        "reason2": "Tingkatkan Efisiensi",
+        "reason2Desc": "Kurangi proses redundan dan tugas manual",
+        "reason3": "Otomatisasi Workflow",
+        "reason3Desc": "Streamline operasi dan hemat waktu",
+        "reason4": "Aktifkan Keputusan Berbasis Data",
+        "reason4Desc": "Insight real-time untuk pengambilan keputusan lebih baik",
+        "reason5": "Standardisasi Operasi",
+        "reason5Desc": "Proses konsisten di seluruh organisasi Anda"
+      },
+      "customized": {
+        "title": "ERP Custom Disesuaikan dengan Workflow Anda",
+        "subtitle": "Tidak semua bisnis sama. ERP Anda seharusnya juga tidak.",
+        "problem": "Masalah dengan ERP Off-the-Shelf",
+        "problemDesc": "Platform ERP generik memaksa Anda untuk menyesuaikan bisnis dengan workflow mereka yang kaku. Konfigurasi menjadi mimpi buruk, dan Anda berakhir dengan fitur yang tidak digunakan dan workaround.",
+        "ourApproach": "Pendekatan Kami",
+        "advantage1": "Penemuan Proses Dahulu",
+        "advantage1Desc": "Kami menganalisis proses bisnis unik Anda sebelum membangun apapun",
+        "advantage2": "Modular & Scalable",
+        "advantage2Desc": "Tambahkan modul dan fitur seiring pertumbuhan bisnis Anda",
+        "advantage3": "Siap Integrasi",
+        "advantage3Desc": "Terhubung seamlessly dengan tools dan sistem existing Anda",
+        "advantage4": "Akses Berbasis Peran",
+        "advantage4Desc": "Kontrol siapa yang melihat dan melakukan apa di setiap level",
+        "advantage5": "Arsitektur Bersih",
+        "advantage5Desc": "Dibangun dengan maintainability dan ekspansi masa depan dalam pikiran",
+        "advantage6": "Peningkatan Berkelanjutan",
+        "advantage6Desc": "Kami terus tingkatkan sistem Anda berdasarkan feedback"
+      },
+      "whyChoose": {
+        "title": "Mengapa Pilih Kami untuk ERP Anda",
+        "subtitle": "Bermitra dengan engineer yang memahami sistem enterprise",
+        "feature1": "Keahlian Engineering",
+        "feature1Desc": "Arsitektur bersih dan best practice untuk maintainability",
+        "feature2": "Pengembangan AI-Accelerated",
+        "feature2Desc": "Delivery lebih cepat tanpa mengorbankan kualitas",
+        "feature3": "Scalable & Maintainable",
+        "feature3Desc": "Sistem dibangun untuk tumbuh dengan bisnis Anda",
+        "feature4": "Pengalaman Industri",
+        "feature4Desc": "10+ tahun di manufaktur, retail, dan distribusi",
+        "feature5": "Delivery Cepat & QA",
+        "feature5Desc": "Software teruji well-tested delivered on schedule",
+        "feature6": "Dukungan Post-Launch",
+        "feature6Desc": "Optimasi berkelanjutan dan peningkatan fitur"
+      },
+      "useCases": {
+        "title": "Solusi ERP untuk Industri Anda",
+        "subtitle": "Modul pre-built dan workflow untuk berbagai jenis bisnis",
+        "case1": "ERP Manufaktur",
+        "case1Desc": "Perencanaan produksi, manajemen inventory, kontrol kualitas, dan optimasi supply chain",
+        "case2": "ERP Distribusi",
+        "case2Desc": "Manajemen gudang, fulfillment pesanan, tracking logistik, dan manajemen supplier",
+        "case3": "ERP Retail",
+        "case3Desc": "Point of sale, sinkronisasi inventory, retail analytics, dan manajemen pelanggan",
+        "case4": "ERP Akuntansi",
+        "case4Desc": "General ledger, accounts payable/receivable, financial reporting, dan compliance",
+        "case5": "ERP Service",
+        "case5Desc": "Project management, alokasi resource, service billing, dan tracking compliance"
+      },
+      "demo": {
+        "title": "Lihat ERP dalam Aksi",
+        "subtitle": "Jelajahi demo live kami untuk melihat cara kerja sistem ERP kami dalam skenario bisnis nyata",
+        "visitDemo": "Kunjungi Situs Demo",
+        "requestDemo": "Minta Demo Personal"
+      },
+      "cta": {
+        "title": "Siap Mengubah Bisnis Anda dengan Custom ERP?",
+        "subtitle": "Mari diskusikan kebutuhan Anda dan bangun solusi yang disesuaikan dengan proses bisnis Anda.",
+        "name": "Nama Lengkap",
+        "namePlaceholder": "John Doe",
+        "email": "Alamat Email",
+        "emailPlaceholder": "john@company.com",
+        "company": "Nama Perusahaan",
+        "companyPlaceholder": "Perusahaan Anda",
+        "message": "Ceritakan kebutuhan ERP Anda",
+        "messagePlaceholder": "Proses bisnis apa yang perlu Anda optimalkan?",
+        "submit": "Mulai Sekarang"
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import HeroSection from '@/components/home/HeroSection';
 import WhyDifferentSection from '@/components/home/WhyDifferentSection';
 import ProductsPreview from '@/components/home/ProductsPreview';
@@ -18,7 +18,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function HomePage() {
+export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   return (
     <>
       <HeroSection />

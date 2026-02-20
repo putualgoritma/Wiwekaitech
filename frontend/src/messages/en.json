@@ -164,6 +164,116 @@
     "contact": {
       "title": "Contact Us | Start Your ERP Project | Wiwekaitech",
       "description": "Get in touch with our team to discuss your custom ERP or enterprise software requirements. Free consultation available."
+    },
+    "products": {
+      "erp": {
+        "title": "Custom ERP Software Development | Tailored Solutions | Wiwekaitech",
+        "description": "Custom ERP software built for your business workflows. Web-based enterprise resource planning systems with finance, inventory, HR, and sales integration. Scalable, modular, integration-ready."
+      }
+    }
+  },
+  "products": {
+    "erp": {
+      "hero": {
+        "title": "Custom ERP Software Built for Your Business",
+        "subtitle": "End-to-end enterprise resource planning systems tailored to your unique workflows — not generic templates.",
+        "demo": "Request a Demo",
+        "sales": "Contact Sales"
+      },
+      "whatIs": {
+        "title": "What is ERP?",
+        "description": "Enterprise Resource Planning (ERP) is a centralized system that integrates critical business functions into a unified platform. It breaks down data silos and enables real-time visibility across your entire organization.",
+        "feature1": "Centralized Data Hub",
+        "feature1Desc": "Single source of truth for all business information",
+        "feature2": "Integrated Modules",
+        "feature2Desc": "Finance, inventory, HR, sales, and more in one system",
+        "feature3": "Real-Time Visibility",
+        "feature3Desc": "Live dashboards and reporting across all departments",
+        "feature4": "Business Automation",
+        "feature4Desc": "Eliminate manual workflows and reduce errors"
+      },
+      "whyNeed": {
+        "title": "Why Businesses Need ERP",
+        "description": "Transform how your business operates with a unified system",
+        "reason1": "Break Data Silos",
+        "reason1Desc": "Connect all departments on a single platform",
+        "reason2": "Improve Efficiency",
+        "reason2Desc": "Reduce redundant processes and manual tasks",
+        "reason3": "Automate Workflows",
+        "reason3Desc": "Streamline operations and save time",
+        "reason4": "Enable Data-Driven Decisions",
+        "reason4Desc": "Real-time insights for better decision making",
+        "reason5": "Standardize Operations",
+        "reason5Desc": "Consistent processes across your organization"
+      },
+      "customized": {
+        "title": "Customized ERP Tailored to Your Workflow",
+        "subtitle": "Not all businesses are the same. Your ERP shouldn't be either.",
+        "problem": "The Problem with Off-the-Shelf ERP",
+        "problemDesc": "Generic ERP platforms force you to adapt your business to their rigid workflows. Configuration becomes a nightmare, and you end up with unused features and workarounds.",
+        "ourApproach": "Our Approach",
+        "advantage1": "Process Discovery First",
+        "advantage1Desc": "We analyze your unique business processes before building anything",
+        "advantage2": "Modular & Scalable",
+        "advantage2Desc": "Add modules and features as your business grows",
+        "advantage3": "Integration Ready",
+        "advantage3Desc": "Seamlessly connects with your existing tools and systems",
+        "advantage4": "Role-Based Access",
+        "advantage4Desc": "Control who sees and does what at every level",
+        "advantage5": "Clean Architecture",
+        "advantage5Desc": "Built with maintainability and future expansion in mind",
+        "advantage6": "Ongoing Improvements",
+        "advantage6Desc": "We continuously enhance your system based on feedback"
+      },
+      "whyChoose": {
+        "title": "Why Choose Us for Your ERP",
+        "subtitle": "Partner with engineers who understand enterprise systems",
+        "feature1": "Engineering Expertise",
+        "feature1Desc": "Clean architecture and best practices for maintainability",
+        "feature2": "AI-Accelerated Development",
+        "feature2Desc": "Faster delivery without compromising quality",
+        "feature3": "Scalable & Maintainable",
+        "feature3Desc": "Systems built to grow with your business",
+        "feature4": "Industry Experience",
+        "feature4Desc": "10+ years across manufacturing, retail, and distribution",
+        "feature5": "Fast Delivery & QA",
+        "feature5Desc": "Well-tested software delivered on schedule",
+        "feature6": "Post-Launch Support",
+        "feature6Desc": "Continuous optimization and feature improvements"
+      },
+      "useCases": {
+        "title": "ERP Solutions for Your Industry",
+        "subtitle": "Pre-built modules and workflows for different business types",
+        "case1": "Manufacturing ERP",
+        "case1Desc": "Production planning, inventory management, quality control, and supply chain optimization",
+        "case2": "Distribution ERP",
+        "case2Desc": "Warehouse management, order fulfillment, logistics tracking, and supplier management",
+        "case3": "Retail ERP",
+        "case3Desc": "Point of sale, inventory sync, retail analytics, and customer management",
+        "case4": "Accounting ERP",
+        "case4Desc": "General ledger, accounts payable/receivable, financial reporting, and compliance",
+        "case5": "Service ERP",
+        "case5Desc": "Project management, resource allocation, service billing, and compliance tracking"
+      },
+      "demo": {
+        "title": "See ERP in Action",
+        "subtitle": "Explore our live demo to see how our ERP system works for real business scenarios",
+        "visitDemo": "Visit Demo Site",
+        "requestDemo": "Request Personalized Demo"
+      },
+      "cta": {
+        "title": "Ready to Transform Your Business with Custom ERP?",
+        "subtitle": "Let's discuss your requirements and build a solution tailored to your business processes.",
+        "name": "Full Name",
+        "namePlaceholder": "John Doe",
+        "email": "Email Address",
+        "emailPlaceholder": "john@company.com",
+        "company": "Company Name",
+        "companyPlaceholder": "Your Company",
+        "message": "Tell us about your ERP needs",
+        "messagePlaceholder": "What business processes do you need to optimize?",
+        "submit": "Get Started"
+      }
     }
   }
 }

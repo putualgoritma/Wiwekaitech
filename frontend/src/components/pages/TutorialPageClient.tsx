@@ -80,8 +80,8 @@ export default function TutorialPageClient() {
                     {tutorial.category && (
                       <Badge variant="secondary">{tutorial.category.name}</Badge>
                     )}
-                    <Badge variant={getDifficultyColor(tutorial.difficulty) as any}>
-                      {t(`difficulty.${tutorial.difficulty}`)}
+                    <Badge variant={getDifficultyColor(tutorial.difficulty_level) as any}>
+                      {t(`difficulty.${tutorial.difficulty_level}`)}
                     </Badge>
                   </div>
                   <h2 className="text-lg font-semibold text-secondary-900 dark:text-white mb-3">

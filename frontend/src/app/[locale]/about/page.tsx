@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import Container from '@/components/shared/Container';
 import Section from '@/components/shared/Section';
@@ -13,7 +13,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function AboutPage() {
+export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
   const t = useTranslations('about');
 
   return (
