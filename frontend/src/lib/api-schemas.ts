@@ -24,6 +24,7 @@ export const ProductSchema = z.object({
   description: z.string(),
   icon: z.string(),
   features: z.string().optional(),
+  product_url: z.string().optional(),
   display_order: z.number().int()
 });
 

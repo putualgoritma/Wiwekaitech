@@ -39,6 +39,7 @@ class Product(Base):
     icon = Column(String(100), nullable=True)
     features_en = Column(JSON, nullable=True)
     features_id = Column(JSON, nullable=True)
+    product_url = Column(String(500), nullable=True)
     display_order = Column(Integer, default=0)
     is_active = Column(Boolean, default=True, index=True)
     created_at = Column(DateTime, server_default=func.now())

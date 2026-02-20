@@ -152,5 +152,6 @@ class ProductService:
             ),
             "slug": product.slug,
             "icon": product.icon,
+            "product_url": product.product_url,
             "display_order": product.display_order
         }

@@ -13,6 +13,7 @@ class ProductCreateUpdate(BaseModel):
     icon: Optional[str] = Field(None, max_length=100)
     features_en: Optional[List[str]] = None
     features_id: Optional[List[str]] = None
+    product_url: Optional[str] = Field(None, max_length=500)
     display_order: int = Field(0, ge=0)
     is_active: bool = Field(True)
 

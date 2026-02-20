@@ -5,6 +5,7 @@ export interface Product {
   description: string;
   icon?: string;
   features: string[];
+  product_url?: string;
   display_order: number;
 }
 

@@ -96,6 +96,7 @@ try:
             icon="🏢",
             features_en=["Custom workflow design", "Multi-module integration", "Role-based access"],
             features_id=["Desain workflow kustom", "Integrasi multi-modul", "Akses berbasis peran"],
+            product_url="/products/erp",
             display_order=1,
             is_active=True
         ),
@@ -108,6 +109,7 @@ try:
             icon="💰",
             features_en=["General ledger", "Accounts payable/receivable", "Financial statements"],
             features_id=["Buku besar umum", "Hutang/piutang", "Laporan keuangan"],
+            product_url="/products/accounting",
             display_order=2,
             is_active=True
         ),
@@ -120,6 +122,7 @@ try:
             icon="📦",
             features_en=["Sales order management", "Inventory tracking", "Multi-warehouse support"],
             features_id=["Manajemen pesanan penjualan", "Pelacakan inventori", "Dukungan multi-gudang"],
+            product_url="/products/sales-inventory",
             display_order=3,
             is_active=True
         ),
@@ -132,6 +135,7 @@ try:
             icon="🏭",
             features_en=["Production planning", "Quality control", "Material management"],
             features_id=["Perencanaan produksi", "Kontrol kualitas", "Manajemen material"],
+            product_url="/products/manufacturing",
             display_order=4,
             is_active=True
         ),
@@ -144,6 +148,7 @@ try:
             icon="📄",
             features_en=["Invoice generation", "Payment tracking", "Recurring billing"],
             features_id=["Pembuatan faktur", "Pelacakan pembayaran", "Penagihan berulang"],
+            product_url="/products/billing",
             display_order=5,
             is_active=True
         ),

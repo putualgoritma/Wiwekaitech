@@ -1,7 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useApiData } from '@/hooks/use-api-data';
 import type { Product } from '@/lib/api-schemas';
 import Container from '@/components/shared/Container';
@@ -11,6 +12,7 @@ import Card from '@/components/shared/Card';
 export default function ProductsPageClient() {
   const t = useTranslations('products');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const { data, loading, error } = useApiData<Product[]>('/products', { page_size: 50 });
 
   return (
@@ -66,33 +68,40 @@ export default function ProductsPageClient() {
                 ? [product.features]
                 : [];
 
+              // Prepend locale to product_url
+              const href = product.product_url 
+                ? `/${locale}${product.product_url}`
+                : '#';
+
               return (
-                <Card key={product.id}>
-                  <div className="p-6">
-                    <div className="text-5xl mb-4">{product.icon || '🧩'}</div>
-                    <h2 className="text-2xl font-semibold text-secondary-900 dark:text-white mb-3">
-                      {product.title}
-                    </h2>
-                    <p className="text-secondary-600 dark:text-secondary-400 mb-4">
-                      {product.description}
-                    </p>
-                    {features.length > 0 && (
-                      <div className="border-t border-secondary-200 dark:border-secondary-700 pt-4">
-                        <h3 className="text-sm font-semibold text-secondary-700 dark:text-secondary-300 mb-2">
-                          Key Features:
-                        </h3>
-                        <ul className="space-y-1">
-                          {features.map((feature, index) => (
-                            <li key={index} className="text-sm text-secondary-600 dark:text-secondary-400 flex items-start">
-                              <span className="text-primary-600 mr-2">✓</span>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </Card>
+                <Link key={product.id} href={href}>
+                  <Card className="h-full cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div className="p-6">
+                      <div className="text-5xl mb-4">{product.icon || '🧩'}</div>
+                      <h2 className="text-2xl font-semibold text-secondary-900 dark:text-white mb-3">
+                        {product.title}
+                      </h2>
+                      <p className="text-secondary-600 dark:text-secondary-400 mb-4">
+                        {product.description}
+                      </p>
+                      {features.length > 0 && (
+                        <div className="border-t border-secondary-200 dark:border-secondary-700 pt-4">
+                          <h3 className="text-sm font-semibold text-secondary-700 dark:text-secondary-300 mb-2">
+                            Key Features:
+                          </h3>
+                          <ul className="space-y-1">
+                            {features.map((feature, index) => (
+                              <li key={index} className="text-sm text-secondary-600 dark:text-secondary-400 flex items-start">
+                                <span className="text-primary-600 mr-2">✓</span>
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </Card>
+                </Link>
               );
             })}
           </div>
