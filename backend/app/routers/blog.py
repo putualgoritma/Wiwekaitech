@@ -2,8 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.services.blog_service import BlogService
+from app.services.category_service import CategoryService
+from app.utils.pagination import PaginationParams, build_paginated_response
 from typing import Optional
-import math
 
 router = APIRouter(prefix="/blog", tags=["blog"])
 
@@ -19,21 +20,18 @@ async def get_blog_posts(
     db: Session = Depends(get_db)
 ):
     """Get published blog posts with pagination and filters"""
+    params = PaginationParams(page=page, page_size=page_size)
     posts, total = BlogService.get_blog_posts(
-        db, lang, page, page_size, category_id, tag, author
+        db, lang, params, category_id, tag, author
     )
-    
-    total_pages = math.ceil(total / page_size)
     
     return {
         "success": True,
-        "data": [BlogService.format_blog_post(p, db, lang) for p in posts],
-        "pagination": {
-            "page": page,
-            "page_size": page_size,
-            "total_items": total,
-            "total_pages": total_pages
-        }
+        **build_paginated_response(
+            [BlogService.format(p, db, lang) for p in posts],
+            total,
+            params
+        )
     }
 
 
@@ -43,7 +41,7 @@ async def get_blog_categories(
     db: Session = Depends(get_db)
 ):
     """Get all blog categories"""
-    categories = BlogService.get_categories(db, lang)
+    categories = CategoryService.get_categories_by_type(db, "blog", lang)
     
     return {
         "success": True,
@@ -74,5 +72,5 @@ async def get_blog_post(
     
     return {
         "success": True,
-        "data": BlogService.format_blog_post(post, db, lang, detail=True)
+        "data": BlogService.format(post, db, lang, detail=True)
     }

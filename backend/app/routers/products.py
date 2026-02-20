@@ -15,10 +15,10 @@ async def get_products(
 ):
     """Get all active products"""
     products = ProductService.get_all_products(db, lang, limit)
-    
+
     return {
         "success": True,
-        "data": [ProductService.format_product(p, lang) for p in products]
+        "data": [ProductService.format(p, lang) for p in products]
     }
 
 
@@ -30,7 +30,7 @@ async def get_product(
 ):
     """Get product by slug"""
     product = ProductService.get_product_by_slug(db, slug, lang)
-    
+
     if not product:
         raise HTTPException(
             status_code=404,
@@ -42,8 +42,8 @@ async def get_product(
                 }
             }
         )
-    
+
     return {
         "success": True,
-        "data": ProductService.format_product(product, lang)
+        "data": ProductService.format(product, lang)
     }

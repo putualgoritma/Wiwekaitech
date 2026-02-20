@@ -2,8 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.services.tutorial_service import TutorialService
+from app.services.category_service import CategoryService
+from app.utils.pagination import PaginationParams, build_paginated_response
 from typing import Optional
-import math
 
 router = APIRouter(prefix="/tutorials", tags=["tutorials"])
 
@@ -19,21 +20,18 @@ async def get_tutorials(
     db: Session = Depends(get_db)
 ):
     """Get published tutorials with pagination and filters"""
+    params = PaginationParams(page=page, page_size=page_size)
     tutorials, total = TutorialService.get_tutorials(
-        db, lang, page, page_size, category_id, difficulty, tag
+        db, lang, params, category_id, difficulty, tag
     )
-    
-    total_pages = math.ceil(total / page_size)
     
     return {
         "success": True,
-        "data": [TutorialService.format_tutorial(t, db, lang) for t in tutorials],
-        "pagination": {
-            "page": page,
-            "page_size": page_size,
-            "total_items": total,
-            "total_pages": total_pages
-        }
+        **build_paginated_response(
+            [TutorialService.format(t, db, lang) for t in tutorials],
+            total,
+            params
+        )
     }
 
 
@@ -43,7 +41,7 @@ async def get_tutorial_categories(
     db: Session = Depends(get_db)
 ):
     """Get all tutorial categories"""
-    categories = TutorialService.get_categories(db, lang)
+    categories = CategoryService.get_categories_by_type(db, "tutorial", lang)
     
     return {
         "success": True,
@@ -74,5 +72,5 @@ async def get_tutorial(
     
     return {
         "success": True,
-        "data": TutorialService.format_tutorial(tutorial, db, lang, detail=True)
+        "data": TutorialService.format(tutorial, db, lang, detail=True)
     }

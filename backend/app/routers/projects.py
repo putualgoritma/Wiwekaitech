@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.services.project_service import ProjectService
+from app.utils.pagination import PaginationParams, build_paginated_response
 from typing import Optional
-import math
 
 router = APIRouter(prefix="/projects", tags=["projects"])
 
@@ -18,21 +18,18 @@ async def get_projects(
     db: Session = Depends(get_db)
 ):
     """Get projects with pagination and filters"""
+    params = PaginationParams(page=page, page_size=page_size)
     projects, total = ProjectService.get_projects(
-        db, lang, page, page_size, featured, industry
+        db, lang, params, featured, industry
     )
-    
-    total_pages = math.ceil(total / page_size)
     
     return {
         "success": True,
-        "data": [ProjectService.format_project(p, lang) for p in projects],
-        "pagination": {
-            "page": page,
-            "page_size": page_size,
-            "total_items": total,
-            "total_pages": total_pages
-        }
+        **build_paginated_response(
+            [ProjectService.format(p, lang) for p in projects],
+            total,
+            params
+        )
     }
 
 
@@ -59,5 +56,5 @@ async def get_project(
     
     return {
         "success": True,
-        "data": ProjectService.format_project(project, lang, detail=True)
+        "data": ProjectService.format(project, lang, detail=True)
     }

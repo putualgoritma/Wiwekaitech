@@ -1,7 +1,10 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 from app.models import Tutorial, Category
-from typing import List, Optional
+from typing import List, Optional, Tuple
+from app.utils.formatters import BaseFormatter
+from app.utils.pagination import PaginationParams, paginate, build_paginated_response
+from app.services.category_service import CategoryService
 
 
 class TutorialService:
@@ -9,13 +12,15 @@ class TutorialService:
     def get_tutorials(
         db: Session,
         lang: str = "en",
-        page: int = 1,
-        page_size: int = 10,
+        params: Optional[PaginationParams] = None,
         category_id: Optional[int] = None,
         difficulty: Optional[str] = None,
         tag: Optional[str] = None
-    ) -> tuple[List[Tutorial], int]:
+    ) -> Tuple[List[Tutorial], int]:
         """Get published tutorials with filters and pagination"""
+        if params is None:
+            params = PaginationParams()
+        
         query = db.query(Tutorial).filter(Tutorial.is_published == True)
         
         if category_id:
@@ -24,15 +29,13 @@ class TutorialService:
         if difficulty:
             query = query.filter(Tutorial.difficulty_level == difficulty)
         
-        # Get total count
-        total = query.count()
-        
         # Apply pagination
-        query = query.order_by(desc(Tutorial.published_at))
-        query = query.offset((page - 1) * page_size).limit(page_size)
+        items, total = paginate(
+            query.order_by(desc(Tutorial.published_at)),
+            params
+        )
         
-        tutorials = query.all()
-        return tutorials, total
+        return items, total
     
     @staticmethod
     def get_tutorial_by_slug(db: Session, slug: str) -> Optional[Tutorial]:
@@ -43,41 +46,17 @@ class TutorialService:
         ).first()
     
     @staticmethod
-    def get_category(db: Session, category_id: int, lang: str = "en") -> Optional[dict]:
-        """Get category by ID"""
-        category = db.query(Category).filter(Category.id == category_id).first()
-        if category:
-            return {
-                "id": category.id,
-                "name": category.name_en if lang == "en" else category.name_id,
-                "slug": category.slug
-            }
-        return None
-    
-    @staticmethod
-    def get_categories(db: Session, lang: str = "en") -> List[dict]:
-        """Get all tutorial categories"""
-        categories = db.query(Category).filter(Category.type == "tutorial").all()
-        return [
-            {
-                "id": cat.id,
-                "name": cat.name_en if lang == "en" else cat.name_id,
-                "slug": cat.slug
-            }
-            for cat in categories
-        ]
-    
-    @staticmethod
-    def format_tutorial(tutorial: Tutorial, db: Session, lang: str = "en", detail: bool = False) -> dict:
-        """Format tutorial for response"""
-        category = TutorialService.get_category(db, tutorial.category_id, lang)
+    def format(tutorial: Tutorial, db: Session, lang: str = "en", detail: bool = False) -> dict:
+        """Format tutorial for response using centralized formatter"""
+        category = CategoryService.get_category(db, tutorial.category_id, lang) if tutorial.category_id else None
         
         data = {
             "id": tutorial.id,
             "category": category,
-            "title": tutorial.title_en if lang == "en" else tutorial.title_id,
+            **BaseFormatter.format_translations(
+                tutorial, ["title", "excerpt", "content"], lang
+            ),
             "slug": tutorial.slug,
-            "excerpt": tutorial.excerpt_en if lang == "en" else tutorial.excerpt_id,
             "difficulty_level": tutorial.difficulty_level,
             "reading_time": tutorial.reading_time,
             "image_url": tutorial.image_url,
@@ -85,7 +64,7 @@ class TutorialService:
             "published_at": tutorial.published_at.isoformat() if tutorial.published_at else None
         }
         
-        if detail:
-            data["content"] = tutorial.content_en if lang == "en" else tutorial.content_id
+        if not detail:
+            data.pop("content", None)
         
         return data

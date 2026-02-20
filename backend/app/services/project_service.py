@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 from app.models import Project, Category
-from typing import List, Optional
-import math
+from typing import List, Optional, Tuple
+from app.utils.formatters import BaseFormatter
+from app.utils.pagination import PaginationParams, paginate, build_paginated_response
 
 
 class ProjectService:
@@ -10,12 +11,14 @@ class ProjectService:
     def get_projects(
         db: Session, 
         lang: str = "en",
-        page: int = 1,
-        page_size: int = 10,
+        params: Optional[PaginationParams] = None,
         featured: Optional[bool] = None,
         industry: Optional[str] = None
-    ) -> tuple[List[Project], int]:
+    ) -> Tuple[List[Project], int]:
         """Get projects with filters and pagination"""
+        if params is None:
+            params = PaginationParams()
+        
         query = db.query(Project).filter(Project.is_active == True)
         
         if featured is not None:
@@ -24,15 +27,13 @@ class ProjectService:
         if industry:
             query = query.filter(Project.industry == industry)
         
-        # Get total count
-        total = query.count()
+        # Apply pagination with count
+        items, total = paginate(
+            query.order_by(desc(Project.completed_date)),
+            params
+        )
         
-        # Apply pagination
-        query = query.order_by(desc(Project.completed_date))
-        query = query.offset((page - 1) * page_size).limit(page_size)
-        
-        projects = query.all()
-        return projects, total
+        return items, total
     
     @staticmethod
     def get_project_by_slug(db: Session, slug: str, lang: str = "en") -> Optional[Project]:
@@ -43,23 +44,24 @@ class ProjectService:
         ).first()
     
     @staticmethod
-    def format_project(project: Project, lang: str, detail: bool = False) -> dict:
-        """Format project for response"""
+    def format(project: Project, lang: str = "en", detail: bool = False) -> dict:
+        """Format project for response using centralized formatter"""
         data = {
             "id": project.id,
-            "title": project.title_en if lang == "en" else project.title_id,
             "slug": project.slug,
-            "summary": project.summary_en if lang == "en" else project.summary_id,
+            **BaseFormatter.format_translations(
+                project, ["title", "summary", "description"], lang
+            ),
             "client_name": project.client_name,
             "industry": project.industry,
             "technologies": project.technologies or [],
             "image_url": project.image_url,
-            "metrics": project.metrics_en if lang == "en" else project.metrics_id or [],
+            **BaseFormatter.format_translations(project, ["metrics"], lang),
             "is_featured": project.is_featured,
             "completed_date": project.completed_date.isoformat() if project.completed_date else None
         }
         
-        if detail:
-            data["description"] = project.description_en if lang == "en" else project.description_id
+        if not detail:
+            data.pop("description", None)
         
         return data
