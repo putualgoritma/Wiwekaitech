@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useLocale } from 'next-intl';
 
 export interface ApiResponse<T> {
@@ -38,63 +38,71 @@ export function useApiData<T>(
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [pagination, setPagination] = useState<any>(null);
+  const [refetchTrigger, setRefetchTrigger] = useState(0);
 
-  const fetchData = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
+  // Stabilize options object to prevent infinite re-renders
+  const optionsKey = useMemo(() => JSON.stringify(options || {}), [options?.page, options?.page_size]);
 
-      // Build query parameters
-      const params = new URLSearchParams({
-        lang: locale,
-        ...(options?.page && { page: options.page.toString() }),
-        ...(options?.page_size && { page_size: options.page_size.toString() }),
-        ...Object.fromEntries(
-          Object.entries(options || {}).filter(([key]) => !['page', 'page_size'].includes(key))
-        )
-      });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'}${endpoint}?${params}`,
-        {
+        // Build query parameters
+        const params = new URLSearchParams({
+          lang: locale,
+          ...(options?.page && { page: options.page.toString() }),
+          ...(options?.page_size && { page_size: options.page_size.toString() }),
+          ...Object.fromEntries(
+            Object.entries(options || {}).filter(([key]) => !['page', 'page_size'].includes(key))
+          )
+        });
+
+        // Construct API URL with proper prefix
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const apiPrefix = '/api/v1';
+        const fullUrl = `${baseUrl}${apiPrefix}${endpoint}?${params}`;
+
+        const response = await fetch(fullUrl, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           },
+        });
+
+        if (!response.ok) {
+          throw new Error(`API error: ${response.statusText}`);
         }
-      );
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.statusText}`);
+        const result: ApiResponse<T> = await response.json();
+
+        if (!result.success) {
+          throw new Error(result.error?.message || 'Unknown API error');
+        }
+
+        setData(result.data || null);
+        if (result.pagination) {
+          setPagination(result.pagination);
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch data');
+        setData(null);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const result: ApiResponse<T> = await response.json();
-
-      if (!result.success) {
-        throw new Error(result.error?.message || 'Unknown API error');
-      }
-
-      setData(result.data || null);
-      if (result.pagination) {
-        setPagination(result.pagination);
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch data');
-      setData(null);
-    } finally {
-      setLoading(false);
-    }
-  }, [endpoint, locale, options]);
-
-  useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [endpoint, locale, optionsKey, refetchTrigger]);
+
+  const refetch = () => setRefetchTrigger(prev => prev + 1);
 
   return {
     data,
     loading,
     error,
     pagination,
-    refetch: fetchData
+    refetch
   };
 }

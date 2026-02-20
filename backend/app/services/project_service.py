@@ -50,13 +50,12 @@ class ProjectService:
             "id": project.id,
             "slug": project.slug,
             **BaseFormatter.format_translations(
-                project, ["title", "summary", "description"], lang
+                project, ["title", "summary", "description", "metrics"], lang
             ),
             "client_name": project.client_name,
             "industry": project.industry,
             "technologies": project.technologies or [],
             "image_url": project.image_url,
-            **BaseFormatter.format_translations(project, ["metrics"], lang),
             "is_featured": project.is_featured,
             "completed_date": project.completed_date.isoformat() if project.completed_date else None
         }

@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.services.tutorial_service import TutorialService
-from app.services.category_service import CategoryService
 from app.utils.pagination import PaginationParams, build_paginated_response
 from typing import Optional
 
@@ -28,25 +27,26 @@ async def get_tutorials(
     return {
         "success": True,
         **build_paginated_response(
-            [TutorialService.format(t, db, lang) for t in tutorials],
+            [TutorialService.format(t, lang=lang) for t in tutorials],
             total,
             params
         )
     }
 
 
-@router.get("/categories")
-async def get_tutorial_categories(
-    lang: str = Query("en", regex="^(en|id)$"),
-    db: Session = Depends(get_db)
-):
-    """Get all tutorial categories"""
-    categories = CategoryService.get_categories_by_type(db, "tutorial", lang)
-    
-    return {
-        "success": True,
-        "data": categories
-    }
+# TODO: Re-enable when categories are fully integrated
+# @router.get("/categories")
+# async def get_tutorial_categories(
+#     lang: str = Query("en", regex="^(en|id)$"),
+#     db: Session = Depends(get_db)
+# ):
+#     """Get all tutorial categories"""
+#     categories = CategoryService.get_categories_by_type(db, "tutorial", lang)
+#     
+#     return {
+#         "success": True,
+#         "data": categories
+#     }
 
 
 @router.get("/{slug}")
@@ -72,5 +72,5 @@ async def get_tutorial(
     
     return {
         "success": True,
-        "data": TutorialService.format(tutorial, db, lang, detail=True)
+        "data": TutorialService.format(tutorial, lang=lang, detail=True)
     }

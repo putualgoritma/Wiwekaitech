@@ -1,10 +1,9 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
-from app.models import Tutorial, Category
+from app.models import Tutorial
 from typing import List, Optional, Tuple
 from app.utils.formatters import BaseFormatter
 from app.utils.pagination import PaginationParams, paginate, build_paginated_response
-from app.services.category_service import CategoryService
 
 
 class TutorialService:
@@ -46,18 +45,19 @@ class TutorialService:
         ).first()
     
     @staticmethod
-    def format(tutorial: Tutorial, db: Session, lang: str = "en", detail: bool = False) -> dict:
+    def format(tutorial: Tutorial, db: Session = None, lang: str = "en", detail: bool = False) -> dict:
         """Format tutorial for response using centralized formatter"""
-        category = CategoryService.get_category(db, tutorial.category_id, lang) if tutorial.category_id else None
+        # TODO: Add category support later
+        # category = CategoryService.get_category(db, tutorial.category_id, lang) if tutorial.category_id else None
         
         data = {
             "id": tutorial.id,
-            "category": category,
+            "category": None,
             **BaseFormatter.format_translations(
                 tutorial, ["title", "excerpt", "content"], lang
             ),
             "slug": tutorial.slug,
-            "difficulty_level": tutorial.difficulty_level,
+            "difficulty": tutorial.difficulty_level,
             "reading_time": tutorial.reading_time,
             "image_url": tutorial.image_url,
             "tags": tutorial.tags or [],

@@ -1,10 +1,9 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
-from app.models import BlogPost, Category
+from app.models import BlogPost
 from typing import List, Optional, Tuple
 from app.utils.formatters import BaseFormatter
 from app.utils.pagination import PaginationParams, paginate, build_paginated_response
-from app.services.category_service import CategoryService
 
 
 class BlogService:
@@ -46,13 +45,14 @@ class BlogService:
         ).first()
     
     @staticmethod
-    def format(post: BlogPost, db: Session, lang: str = "en", detail: bool = False) -> dict:
+    def format(post: BlogPost, db: Session = None, lang: str = "en", detail: bool = False) -> dict:
         """Format blog post for response using centralized formatter"""
-        category = CategoryService.get_category(db, post.category_id, lang) if post.category_id else None
+        # TODO: Add category support later
+        # category = CategoryService.get_category(db, post.category_id, lang) if post.category_id else None
         
         data = {
             "id": post.id,
-            "category": category,
+            "category": None,
             **BaseFormatter.format_translations(
                 post, ["title", "excerpt", "content"], lang
             ),
