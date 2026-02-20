@@ -169,6 +169,10 @@
       "erp": {
         "title": "Pengembangan Software ERP Custom | Solusi Disesuaikan | Wiwekaitech",
         "description": "Software ERP custom dibangun untuk alur kerja bisnis Anda. Sistem enterprise resource planning berbasis web dengan integrasi finance, inventory, HR, dan sales. Scalable, modular, siap integrasi."
+      },
+      "csp": {
+        "title": "Sistem Keuangan Koperasi dengan Aplikasi Mobile | Software Koperasi Simpan Pinjam",
+        "description": "Sistem keuangan koperasi berbasis web modern dengan aplikasi mobile terintegrasi. Kelola tabungan, pinjaman, data anggota, dan akuntansi secara efisien. Disesuaikan dengan kebutuhan koperasi Anda."
       }
     }
   },
@@ -273,6 +277,152 @@
         "message": "Ceritakan kebutuhan ERP Anda",
         "messagePlaceholder": "Proses bisnis apa yang perlu Anda optimalkan?",
         "submit": "Mulai Sekarang"
+      }
+    },
+    "csp": {
+      "hero": {
+        "badge1": "Sistem Berbasis Web",
+        "badge2": "Aplikasi Mobile untuk Anggota",
+        "badge3": "Aman & Scalable",
+        "title": "Sistem Keuangan Koperasi Modern dengan Aplikasi Mobile",
+        "subtitle": "Software koperasi simpan pinjam end-to-end untuk mengelola tabungan, pinjaman, data anggota, akuntansi, dan pelaporan — dapat diakses melalui web dan aplikasi mobile.",
+        "cta_request_demo": "Minta Demo",
+        "cta_talk_expert": "Berbicara dengan Ahli Kami"
+      },
+      "whatIs": {
+        "title": "Apa itu Sistem Keuangan Koperasi?",
+        "description": "Definisi dan tujuan utama software koperasi simpan pinjam",
+        "feature1": "Sistem manajemen anggota terpusat",
+        "feature2": "Perhitungan tabungan dan pinjaman otomatis",
+        "feature3": "Pelacakan cicilan real-time",
+        "feature4": "Pelaporan keuangan terintegrasi",
+        "feature5": "Aplikasi mobile untuk akses anggota",
+        "content1": "Sistem Keuangan Koperasi (Koperasi Simpan Pinjam) adalah platform berbasis web terpusat yang mengelola semua aspek koperasi simpan pinjam. Sistem ini menyatukan data anggota, rekening tabungan, manajemen pinjaman, pelacakan cicilan, dan pelaporan keuangan ke dalam satu sistem terpadu.",
+        "content2": "Sistem kami dirancang khusus untuk koperasi, dengan alur kerja bawaan untuk jenis tabungan, skema pinjaman, perhitungan bunga, dan distribusi pembagian sisa hasil usaha (SHU). Tidak seperti software akuntansi generik, platform kami memahami logika bisnis unik dari operasi koperasi.",
+        "benefits_title": "Manfaat Utama Sistem Koperasi Digital",
+        "benefit1": "Data anggota terpusat dan riwayat transaksi",
+        "benefit2": "Perhitungan bunga dan cicilan otomatis",
+        "benefit3": "Laporan keuangan dan dashboard real-time",
+        "benefit4": "Mengurangi kesalahan manual dan paperwork"
+      },
+      "whyNeed": {
+        "title": "Mengapa Koperasi Modern Memerlukan Transformasi Digital",
+        "description": "Alasan bisnis untuk manajemen koperasi digital",
+        "reason1_title": "Manajemen Anggota Efisien",
+        "reason1_description": "Kelola profil anggota, rekening tabungan, dan riwayat pinjaman dalam satu sistem terpusat",
+        "reason2_title": "Perhitungan Otomatis",
+        "reason2_description": "Hilangkan kesalahan manual dalam perhitungan tabungan, pinjaman, dan bunga",
+        "reason3_title": "Pelacakan Cicilan Akurat",
+        "reason3_description": "Pantau pembayaran pinjaman, denda, dan jadwal pembayaran secara otomatis",
+        "reason4_title": "Laporan Keuangan Real-Time",
+        "reason4_description": "Hasilkan laporan komprehensif kapan saja untuk audit, compliance, dan pengambilan keputusan",
+        "reason5_title": "Transparansi Meningkat",
+        "reason5_description": "Anggota dapat melihat akun mereka online, meningkatkan kepercayaan dan keterlibatan",
+        "reason6_title": "Kurangi Kesalahan Manusia",
+        "reason6_description": "Alur kerja otomatis meminimalkan kesalahan perhitungan dan ketidakkonsistenan data"
+      },
+      "mobileApp": {
+        "title": "Sistem Koperasi dengan Aplikasi Mobile Terintegrasi",
+        "description": "Keunggulan kompetitif dari perbankan koperasi berbasis mobile",
+        "uniqueValue": "Anggota Dapat Mengakses Kapan Saja, Di Mana Saja",
+        "explanation": "Tidak seperti sistem koperasi tradisional, kami menyediakan aplikasi mobile terintegrasi untuk anggota. Ini memungkinkan akses self-service real-time ke akun, mengurangi pertanyaan, dan meningkatkan kepuasan anggota.",
+        "memberCapabilities_title": "Apa yang Dapat Dilakukan Anggota di Mobile",
+        "feature1": "Cek saldo tabungan secara real-time",
+        "feature2": "Lihat status pinjaman dan saldo tersisa",
+        "feature3": "Pantau riwayat pembayaran cicilan",
+        "feature4": "Ajukan aplikasi pinjaman baru",
+        "feature5": "Terima notifikasi transaksi",
+        "feature6": "Akses riwayat transaksi lengkap",
+        "benefits_title": "Manfaat Bisnis",
+        "benefit1": "Keterlibatan dan retensi anggota lebih tinggi",
+        "benefit2": "Kurangi pertanyaan telepon/dukungan",
+        "benefit3": "Transparansi dan kepercayaan lebih baik",
+        "benefit4": "Pengalaman digital modern untuk anggota"
+      },
+      "customize": {
+        "title": "Software Koperasi Disesuaikan dengan Alur Kerja Anda",
+        "description": "Setiap koperasi unik — sistem kami beradaptasi dengan aturan bisnis Anda",
+        "savings_title": "Jenis Tabungan Fleksibel",
+        "savings_desc": "Dukung program tabungan wajib, sukarela, dan khusus dengan aturan custom",
+        "loans_title": "Skema Pinjaman Custom",
+        "loans_desc": "Tentukan jenis pinjaman, jumlah maksimal, dan kriteria kelayakan",
+        "interest_title": "Logika Perhitungan Bunga",
+        "interest_desc": "Sesuaikan suku bunga, metode perhitungan, dan aturan penyesuaian",
+        "penalties_title": "Aturan Denda Fleksibel",
+        "penalties_desc": "Tetapkan kebijakan denda untuk pembayaran terlambat dan kondisi default",
+        "sharing_title": "Pembagian Laba (SHU)",
+        "sharing_desc": "Konfigurasi rasio distribusi dan metode alokasi laba",
+        "workflows_title": "Alur Kerja Persetujuan",
+        "workflows_desc": "Tentukan proses persetujuan multi-level untuk pinjaman dan transaksi",
+        "characteristics_title": "Karakteristik Sistem",
+        "characteristic_modular": "Modular",
+        "characteristic_scalable": "Scalable",
+        "characteristic_secure": "Aman",
+        "characteristic_integration": "Siap Integrasi",
+        "characteristic_expandable": "Mudah Diperluas"
+      },
+      "whyChoose": {
+        "title": "Mengapa Memilih Kami sebagai Mitra Teknologi Anda",
+        "description": "Software manajemen koperasi tingkat enterprise yang dibangun untuk keandalan",
+        "webMobile_title": "Web & Mobile Terintegrasi",
+        "webMobile_description": "Pengalaman seamless di desktop, tablet, dan platform mobile dengan sinkronisasi data",
+        "security_title": "Akses Aman & Berbasis Peran",
+        "security_description": "Keamanan tingkat bank dengan kontrol izin granular untuk administrator, petugas, dan anggota",
+        "development_title": "Pengembangan Cepat",
+        "development_description": "Engineering berbantuan AI mempercepat time-to-market tanpa mengorbankan kualitas kode",
+        "scalable_title": "Arsitektur Scalable",
+        "scalable_description": "Tumbuh dari ratusan hingga ribuan anggota tanpa degradasi performa",
+        "codeQuality_title": "Kode Bersih & Terpelihara",
+        "codeQuality_description": "Codebase tingkat enterprise memastikan stabilitas jangka panjang dan enhancement mudah",
+        "support_title": "Dukungan & Enhancement Berkelanjutan",
+        "support_description": "Tim dukungan dedicated untuk maintenance, bug fixes, dan peningkatan fitur"
+      },
+      "useCases": {
+        "title": "Siapa yang Membutuhkan Sistem Ini?",
+        "description": "Sistem koperasi yang dipercaya oleh organisasi keuangan di berbagai sektor",
+        "ksp_title": "Koperasi Simpan Pinjam (KSP)",
+        "ksp_description": "Kasus penggunaan utama — dirancang khusus untuk koperasi simpan pinjam tradisional",
+        "creditUnions_title": "Koperasi Kredit",
+        "creditUnions_description": "Mirip dengan koperasi dengan struktur milik anggota dan tata kelola demokratis",
+        "employees_title": "Koperasi Karyawan",
+        "employees_description": "Dukung program tabungan dan pinjaman karyawan dalam organisasi",
+        "community_title": "Lembaga Keuangan Komunitas",
+        "community_description": "Organisasi keuangan lokal yang melayani komunitas geografis atau demografis spesifik",
+        "microfinance_title": "Organisasi Keuangan Mikro",
+        "microfinance_description": "Melayani peminjam skala kecil dengan program pinjaman dan tabungan",
+        "islamic_title": "Koperasi Islam (BMT)",
+        "islamic_description": "Mendukung model pembiayaan yang sesuai Syariah dan pembagian laba"
+      },
+      "demo": {
+        "title": "Lihat Sistem Koperasi dalam Aksi",
+        "description": "Jelajahi platform kami dan pahami bagaimana sistem ini mengubah operasi koperasi",
+        "website_title": "Kunjungi Situs Demo",
+        "website_description": "Jelajahi interface web lengkap dengan data sampel dan alur kerja nyata",
+        "website_cta": "Akses Demo",
+        "mobile_title": "Download Demo Aplikasi Mobile",
+        "mobile_description": "Uji pengalaman aplikasi mobile di perangkat Anda",
+        "mobile_cta": "Dapatkan Demo Mobile",
+        "personalized_title": "Minta Demo Personal",
+        "personalized_description": "Jadwalkan demo langsung yang disesuaikan dengan kebutuhan koperasi spesifik Anda",
+        "personalized_cta": "Minta Demo"
+      },
+      "ctaForm": {
+        "title": "Siap Mendigitalisasi Koperasi Anda?",
+        "description": "Bergabunglah dengan ribuan koperasi yang menggunakan teknologi modern. Mulai hari ini dengan konsultasi yang dipersonalisasi.",
+        "field_name": "Nama Lengkap",
+        "placeholder_name": "John Doe",
+        "field_email": "Alamat Email",
+        "placeholder_email": "john@company.com",
+        "field_organization": "Nama Organisasi",
+        "placeholder_organization": "Nama Koperasi Anda",
+        "field_phone": "Nomor Telepon",
+        "placeholder_phone": "+62 812 3456 7890",
+        "field_message": "Pesan (Opsional)",
+        "placeholder_message": "Ceritakan tentang koperasi Anda dan apa yang Anda butuhkan...",
+        "button_submit": "Mulai Koperasi Digital Anda Hari Ini",
+        "button_submitting": "Mengirim...",
+        "success_message": "Terima kasih! Kami akan segera menghubungi Anda.",
+        "privacy_notice": "Kami menghormati privasi Anda. Informasi Anda hanya akan digunakan untuk menghubungi Anda tentang layanan kami."
       }
     }
   }

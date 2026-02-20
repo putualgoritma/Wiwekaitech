@@ -169,6 +169,10 @@
       "erp": {
         "title": "Custom ERP Software Development | Tailored Solutions | Wiwekaitech",
         "description": "Custom ERP software built for your business workflows. Web-based enterprise resource planning systems with finance, inventory, HR, and sales integration. Scalable, modular, integration-ready."
+      },
+      "csp": {
+        "title": "Cooperative Financial System with Mobile App | Koperasi Simpan Pinjam Software",
+        "description": "Modern web-based cooperative financial system with integrated mobile app. Manage savings, loans, members, and accounting efficiently. Customized for your cooperative needs."
       }
     }
   },
@@ -273,6 +277,152 @@
         "message": "Tell us about your ERP needs",
         "messagePlaceholder": "What business processes do you need to optimize?",
         "submit": "Get Started"
+      }
+    },
+    "csp": {
+      "hero": {
+        "badge1": "Web-Based System",
+        "badge2": "Mobile App for Members",
+        "badge3": "Secure & Scalable",
+        "title": "Modern Cooperative Financial System with Mobile App",
+        "subtitle": "End-to-end koperasi simpan pinjam software to manage savings, loans, member data, accounting, and reporting — accessible via web and mobile app.",
+        "cta_request_demo": "Request Demo",
+        "cta_talk_expert": "Talk to Our Expert"
+      },
+      "whatIs": {
+        "title": "What is a Cooperative Financial System?",
+        "description": "Definition and core purpose of savings and loan cooperative software",
+        "feature1": "Centralized member management system",
+        "feature2": "Automated savings and loan calculations",
+        "feature3": "Real-time installment tracking",
+        "feature4": "Integrated financial reporting",
+        "feature5": "Mobile app for member access",
+        "content1": "A Cooperative Financial System (Koperasi Simpan Pinjam) is a centralized web-based platform that manages all aspects of savings and loan cooperatives. It brings together member data, savings accounts, loan management, installment tracking, and financial reporting into a single, unified system.",
+        "content2": "Our system is designed specifically for cooperatives, with built-in workflows for savings types, loan schemes, interest calculations, and profit-sharing (SHU) distributions. Unlike generic accounting software, our platform understands the unique business logic of cooperative operations.",
+        "benefits_title": "Key Benefits of Digital Cooperative Systems",
+        "benefit1": "Centralized member data and transaction history",
+        "benefit2": "Automated interest and installment calculations",
+        "benefit3": "Real-time financial reports and dashboards",
+        "benefit4": "Reduced manual errors and paperwork"
+      },
+      "whyNeed": {
+        "title": "Why Modern Cooperatives Need Digital Transformation",
+        "description": "The business case for digital cooperative management",
+        "reason1_title": "Efficient Member Management",
+        "reason1_description": "Manage member profiles, savings accounts, and loan history in a centralized system",
+        "reason2_title": "Automated Calculations",
+        "reason2_description": "Eliminate manual errors in savings, loan, and interest calculations",
+        "reason3_title": "Accurate Installment Tracking",
+        "reason3_description": "Monitor loan repayments, penalties, and payment schedules automatically",
+        "reason4_title": "Real-Time Financial Reports",
+        "reason4_description": "Generate comprehensive reports anytime for audits, compliance, and decision-making",
+        "reason5_title": "Improved Transparency",
+        "reason5_description": "Members can view their accounts online, increasing trust and engagement",
+        "reason6_title": "Reduce Human Errors",
+        "reason6_description": "Automated workflows minimize miscalculations and data inconsistencies"
+      },
+      "mobileApp": {
+        "title": "Cooperative System with Integrated Mobile App",
+        "description": "The competitive advantage of mobile-first cooperative banking",
+        "uniqueValue": "Members Can Access Anytime, Anywhere",
+        "explanation": "Unlike traditional cooperative systems, we provide an integrated mobile app for members. This enables real-time self-service access to accounts, reducing inquiries and improving member satisfaction.",
+        "memberCapabilities_title": "What Members Can Do on Mobile",
+        "feature1": "Check savings balance in real-time",
+        "feature2": "View loan status and remaining balance",
+        "feature3": "Monitor installment payment history",
+        "feature4": "Submit new loan applications",
+        "feature5": "Receive transaction notifications",
+        "feature6": "Access complete transaction history",
+        "benefits_title": "Business Benefits",
+        "benefit1": "Higher member engagement and retention",
+        "benefit2": "Reduced phone/support inquiries",
+        "benefit3": "Better transparency and trust",
+        "benefit4": "Modern digital experience for members"
+      },
+      "customize": {
+        "title": "Customized Cooperative Software Tailored to Your Workflow",
+        "description": "Every cooperative is unique — our system adapts to your business rules",
+        "savings_title": "Flexible Savings Types",
+        "savings_desc": "Support mandatory, voluntary, and special savings programs with custom rules",
+        "loans_title": "Custom Loan Schemes",
+        "loans_desc": "Define loan types, maximum amounts, and eligibility criteria",
+        "interest_title": "Interest Calculation Logic",
+        "interest_desc": "Customize interest rates, calculation methods, and adjustment rules",
+        "penalties_title": "Flexible Penalty Rules",
+        "penalties_desc": "Set penalty policies for late payments and default conditions",
+        "sharing_title": "Profit Sharing (SHU)",
+        "sharing_desc": "Configure profit distribution ratios and allocation methods",
+        "workflows_title": "Approval Workflows",
+        "workflows_desc": "Define multi-level approval processes for loans and transactions",
+        "characteristics_title": "System Characteristics",
+        "characteristic_modular": "Modular",
+        "characteristic_scalable": "Scalable",
+        "characteristic_secure": "Secure",
+        "characteristic_integration": "Integration-Ready",
+        "characteristic_expandable": "Easy to Expand"
+      },
+      "whyChoose": {
+        "title": "Why Choose Us as Your Technology Partner",
+        "description": "Enterprise-grade cooperative management software built for reliability",
+        "webMobile_title": "Web & Mobile Integrated",
+        "webMobile_description": "Seamless experience across desktop, tablet, and mobile platforms with synchronized data",
+        "security_title": "Secure & Role-Based Access",
+        "security_description": "Bank-level security with granular permission control for administrators, officers, and members",
+        "development_title": "Fast Development",
+        "development_description": "AI-assisted engineering accelerates time-to-market without sacrificing code quality",
+        "scalable_title": "Scalable Architecture",
+        "scalable_description": "Grow from hundreds to thousands of members without performance degradation",
+        "codeQuality_title": "Clean & Maintainable Code",
+        "codeQuality_description": "Enterprise-grade codebase ensures long-term stability and easy enhancements",
+        "support_title": "Ongoing Support & Enhancement",
+        "support_description": "Dedicated support team for maintenance, bug fixes, and feature improvements"
+      },
+      "useCases": {
+        "title": "Who Is This System For?",
+        "description": "Cooperative systems trusted by financial organizations across different sectors",
+        "ksp_title": "Savings & Loan Cooperatives (KSP)",
+        "ksp_description": "The primary use case — designed specifically for traditional savings and loan cooperatives",
+        "creditUnions_title": "Credit Unions",
+        "creditUnions_description": "Similar to cooperatives with member-owned structure and democratic governance",
+        "employees_title": "Employee Cooperatives",
+        "employees_description": "Support employee-based savings and loan programs within organizations",
+        "community_title": "Community Financial Institutions",
+        "community_description": "Local finance organizations serving specific geographic or demographic communities",
+        "microfinance_title": "Microfinance Organizations",
+        "microfinance_description": "Serve small-scale borrowers with loans and savings programs",
+        "islamic_title": "Islamic Cooperatives (BMT)",
+        "islamic_description": "Support Sharia-compliant financing and profit-sharing models"
+      },
+      "demo": {
+        "title": "See the Cooperative System in Action",
+        "description": "Explore our platform and understand how it transforms cooperative operations",
+        "website_title": "Visit Demo Website",
+        "website_description": "Explore the full web interface with sample data and real workflows",
+        "website_cta": "Access Demo",
+        "mobile_title": "Download Mobile App Demo",
+        "mobile_description": "Test the mobile app experience on your device",
+        "mobile_cta": "Get Mobile Demo",
+        "personalized_title": "Request Personalized Demo",
+        "personalized_description": "Schedule a live demo tailored to your specific cooperative needs",
+        "personalized_cta": "Request Demo"
+      },
+      "ctaForm": {
+        "title": "Ready to Digitize Your Cooperative?",
+        "description": "Join thousands of cooperatives using modern technology. Get started today with a personalized consultation.",
+        "field_name": "Full Name",
+        "placeholder_name": "John Doe",
+        "field_email": "Email Address",
+        "placeholder_email": "john@company.com",
+        "field_organization": "Organization Name",
+        "placeholder_organization": "Your Cooperative Name",
+        "field_phone": "Phone Number",
+        "placeholder_phone": "+62 812 3456 7890",
+        "field_message": "Message (Optional)",
+        "placeholder_message": "Tell us about your cooperative and what you need...",
+        "button_submit": "Start Your Digital Cooperative Today",
+        "button_submitting": "Submitting...",
+        "success_message": "Thank you! We'll be in touch soon.",
+        "privacy_notice": "We respect your privacy. Your information will only be used to contact you about our services."
       }
     }
   }
