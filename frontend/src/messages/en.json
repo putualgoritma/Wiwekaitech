@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "projects": "Projects",
+    "tutorial": "Tutorial",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Custom Web Application & ERP Development Company",
+    "subtitle": "We build scalable ERP systems, accounting systems, sales platforms, and enterprise web applications tailored to your business workflow.",
+    "cta1": "View Our Projects",
+    "cta2": "Start Your Project",
+    "badge1": "10+ Years Experience",
+    "badge2": "AI-Accelerated Development",
+    "badge3": "Enterprise-Grade Architecture"
+  },
+  "whyDifferent": {
+    "title": "Why We Deliver Faster Than Other Software Companies",
+    "subtitle": "We combine real engineering experience with AI-powered tools",
+    "description": "We combine 10+ years of enterprise system experience with cutting-edge AI tools like ChatGPT, GitHub Copilot, and Cursor to accelerate development without sacrificing architecture quality.",
+    "traditional": "Traditional Development",
+    "aiAccelerated": "AI-Accelerated Engineering",
+    "benefit1": "Faster prototyping",
+    "benefit2": "Shorter development cycles",
+    "benefit3": "Clean scalable architecture",
+    "benefit4": "Optimized database design",
+    "benefit5": "Long-term maintainability"
+  },
+  "products": {
+    "title": "What We Build",
+    "subtitle": "Enterprise software solutions tailored to your business needs",
+    "showAll": "Show All Products",
+    "learnMore": "Learn More"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Real results from our ERP and enterprise software implementations",
+    "showAll": "Show All Projects",
+    "viewDetails": "View Details",
+    "client": "Client",
+    "industry": "Industry",
+    "technologies": "Technologies",
+    "completedDate": "Completed"
+  },
+  "tutorial": {
+    "title": "Learn to Build ERP & Scalable Web Applications",
+    "subtitle": "Expert tutorials on FastAPI, Laravel, database design, and enterprise architecture",
+    "showAll": "Show All Tutorials",
+    "readMore": "Read Tutorial",
+    "readingTime": "{minutes} min read",
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "blog": {
+    "title": "Latest Insights",
+    "subtitle": "Technical articles and thought leadership on enterprise software development",
+    "showAll": "Show All Posts",
+    "readMore": "Read More",
+    "readingTime": "{minutes} min read",
+    "by": "By",
+    "on": "on"
+  },
+  "contactCta": {
+    "title": "Ready to Transform Your Business?",
+    "subtitle": "Let's discuss your requirements and build a solution that scales with your business.",
+    "cta": "Start a Conversation"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd love to hear about your project. Fill out the form below and we'll get back to you within 24 hours.",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@company.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+62 812 3456 7890",
+      "company": "Company Name",
+      "companyPlaceholder": "Your Company",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help you?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project requirements...",
+      "preferredContact": "Preferred Contact Method",
+      "contactEmail": "Email",
+      "contactPhone": "Phone",
+      "contactWhatsapp": "WhatsApp",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Thank you! We'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "about": {
+    "title": "About Wiwekaitech",
+    "subtitle": "Custom ERP & Enterprise Software Experts",
+    "description": "We are a specialized software development company focused on building custom ERP systems, accounting platforms, and enterprise web applications. With over 10 years of experience, we understand the complexity of business systems and deliver solutions that scale.",
+    "mission": "Our Mission",
+    "missionText": "To empower businesses with robust, scalable enterprise software that drives efficiency and growth.",
+    "vision": "Our Vision",
+    "visionText": "To be the leading provider of AI-accelerated enterprise software development in Southeast Asia.",
+    "values": "Our Values",
+    "value1": "Quality First",
+    "value1Text": "We never compromise on architecture and code quality.",
+    "value2": "Innovation",
+    "value2Text": "We leverage the latest technologies including AI to deliver faster.",
+    "value3": "Client Success",
+    "value3Text": "Your success is our success. We build solutions that truly work."
+  },
+  "footer": {
+    "company": "wiwekaitech",
+    "companyDescription": "Custom ERP & Enterprise Software Development Company",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "resources": "Resources",
+    "contact": "Contact Information",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "copyright": "© {year} Wiwekaitech. All rights reserved.",
+    "followUs": "Follow Us"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "backHome": "Back to Home",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "viewAll": "View All"
+  },
+  "seo": {
+    "home": {
+      "title": "Custom ERP Development Company | Wiwekaitech",
+      "description": "Expert custom ERP, accounting systems, and enterprise web application development. AI-accelerated engineering with 10+ years experience. Fast delivery, scalable architecture."
+    },
+    "about": {
+      "title": "About Us | Wiwekaitech - Enterprise Software Experts",
+      "description": "Learn about Wiwekaitech, a specialized ERP and enterprise software development company with 10+ years of experience in building scalable business systems."
+    },
+    "products": {
+      "title": "Our Products & Services | ERP Solutions | Wiwekaitech",
+      "description": "Custom ERP systems, web-based accounting, sales & inventory management, manufacturing platforms. Enterprise-grade software tailored to your business."
+    },
+    "projects": {
+      "title": "Projects Portfolio | ERP Implementation Case Studies | Wiwekaitech",
+      "description": "Browse our portfolio of successful ERP and enterprise software projects. Real results from government, manufacturing, and business sectors."
+    },
+    "tutorial": {
+      "title": "Coding Tutorials | FastAPI, Laravel, ERP Development | Wiwekaitech",
+      "description": "Learn to build scalable ERP systems and web applications. Expert tutorials on FastAPI, Laravel, database design, and enterprise architecture."
+    },
+    "blog": {
+      "title": "Blog | Enterprise Software Insights | Wiwekaitech",
+      "description": "Technical articles and thought leadership on enterprise software development, AI tools, and development best practices."
+    },
+    "contact": {
+      "title": "Contact Us | Start Your ERP Project | Wiwekaitech",
+      "description": "Get in touch with our team to discuss your custom ERP or enterprise software requirements. Free consultation available."
+    }
+  }
+}

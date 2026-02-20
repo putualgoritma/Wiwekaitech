@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "products": "Produk",
+    "projects": "Proyek",
+    "tutorial": "Tutorial",
+    "blog": "Blog",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "title": "Perusahaan Pengembangan Aplikasi Web & ERP Custom",
+    "subtitle": "Kami membangun sistem ERP, sistem akuntansi, platform penjualan, dan aplikasi web enterprise yang disesuaikan dengan alur bisnis Anda.",
+    "cta1": "Lihat Proyek Kami",
+    "cta2": "Mulai Proyek Anda",
+    "badge1": "Pengalaman 10+ Tahun",
+    "badge2": "Pengembangan AI-Accelerated",
+    "badge3": "Arsitektur Enterprise-Grade"
+  },
+  "whyDifferent": {
+    "title": "Mengapa Kami Lebih Cepat Dari Perusahaan Software Lain",
+    "subtitle": "Kami menggabungkan pengalaman engineering nyata dengan tools berbasis AI",
+    "description": "Kami menggabungkan pengalaman 10+ tahun dalam sistem enterprise dengan tools AI cutting-edge seperti ChatGPT, GitHub Copilot, dan Cursor untuk mempercepat pengembangan tanpa mengorbankan kualitas arsitektur.",
+    "traditional": "Pengembangan Tradisional",
+    "aiAccelerated": "Engineering AI-Accelerated",
+    "benefit1": "Prototyping lebih cepat",
+    "benefit2": "Siklus pengembangan lebih pendek",
+    "benefit3": "Arsitektur scalable yang bersih",
+    "benefit4": "Desain database teroptimasi",
+    "benefit5": "Maintainability jangka panjang"
+  },
+  "products": {
+    "title": "Apa Yang Kami Bangun",
+    "subtitle": "Solusi software enterprise yang disesuaikan dengan kebutuhan bisnis Anda",
+    "showAll": "Lihat Semua Produk",
+    "learnMore": "Pelajari Lebih Lanjut"
+  },
+  "projects": {
+    "title": "Proyek Unggulan",
+    "subtitle": "Hasil nyata dari implementasi ERP dan software enterprise kami",
+    "showAll": "Lihat Semua Proyek",
+    "viewDetails": "Lihat Detail",
+    "client": "Klien",
+    "industry": "Industri",
+    "technologies": "Teknologi",
+    "completedDate": "Selesai"
+  },
+  "tutorial": {
+    "title": "Belajar Membangun ERP & Aplikasi Web Scalable",
+    "subtitle": "Tutorial expert tentang FastAPI, Laravel, desain database, dan arsitektur enterprise",
+    "showAll": "Lihat Semua Tutorial",
+    "readMore": "Baca Tutorial",
+    "readingTime": "{minutes} menit baca",
+    "difficulty": {
+      "beginner": "Pemula",
+      "intermediate": "Menengah",
+      "advanced": "Lanjutan"
+    }
+  },
+  "blog": {
+    "title": "Insight Terbaru",
+    "subtitle": "Artikel teknis dan thought leadership tentang pengembangan software enterprise",
+    "showAll": "Lihat Semua Artikel",
+    "readMore": "Baca Selengkapnya",
+    "readingTime": "{minutes} menit baca",
+    "by": "Oleh",
+    "on": "pada"
+  },
+  "contactCta": {
+    "title": "Siap Mentransformasi Bisnis Anda?",
+    "subtitle": "Mari diskusikan kebutuhan Anda dan bangun solusi yang berkembang dengan bisnis Anda.",
+    "cta": "Mulai Percakapan"
+  },
+  "contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Kami ingin mendengar tentang proyek Anda. Isi formulir di bawah ini dan kami akan menghubungi Anda dalam 24 jam.",
+    "form": {
+      "name": "Nama Lengkap",
+      "namePlaceholder": "John Doe",
+      "email": "Alamat Email",
+      "emailPlaceholder": "john@company.com",
+      "phone": "Nomor Telepon",
+      "phonePlaceholder": "+62 812 3456 7890",
+      "company": "Nama Perusahaan",
+      "companyPlaceholder": "Perusahaan Anda",
+      "subject": "Subyek",
+      "subjectPlaceholder": "Bagaimana kami bisa membantu?",
+      "message": "Pesan",
+      "messagePlaceholder": "Ceritakan tentang kebutuhan proyek Anda...",
+      "preferredContact": "Metode Kontak yang Diinginkan",
+      "contactEmail": "Email",
+      "contactPhone": "Telepon",
+      "contactWhatsapp": "WhatsApp",
+      "submit": "Kirim Pesan",
+      "submitting": "Mengirim...",
+      "success": "Terima kasih! Kami akan segera menghubungi Anda.",
+      "error": "Terjadi kesalahan. Silakan coba lagi."
+    }
+  },
+  "about": {
+    "title": "Tentang Wiwekaitech",
+    "subtitle": "Ahli ERP Custom & Software Enterprise",
+    "description": "Kami adalah perusahaan pengembangan software khusus yang fokus membangun sistem ERP custom, platform akuntansi, dan aplikasi web enterprise. Dengan pengalaman 10+ tahun, kami memahami kompleksitas sistem bisnis dan memberikan solusi yang scalable.",
+    "mission": "Misi Kami",
+    "missionText": "Memberdayakan bisnis dengan software enterprise yang robust dan scalable yang mendorong efisiensi dan pertumbuhan.",
+    "vision": "Visi Kami",
+    "visionText": "Menjadi penyedia terdepan dalam pengembangan software enterprise AI-accelerated di Asia Tenggara.",
+    "values": "Nilai Kami",
+    "value1": "Kualitas Utama",
+    "value1Text": "Kami tidak pernah berkompromi pada arsitektur dan kualitas kode.",
+    "value2": "Inovasi",
+    "value2Text": "Kami memanfaatkan teknologi terbaru termasuk AI untuk deliver lebih cepat.",
+    "value3": "Kesuksesan Klien",
+    "value3Text": "Kesuksesan Anda adalah kesuksesan kami. Kami membangun solusi yang benar-benar bekerja."
+  },
+  "footer": {
+    "company": "wiwekaitech",
+    "companyDescription": "Perusahaan Pengembangan ERP Custom & Software Enterprise",
+    "quickLinks": "Tautan Cepat",
+    "services": "Layanan",
+    "resources": "Sumber Daya",
+    "contact": "Informasi Kontak",
+    "email": "Email",
+    "phone": "Telepon",
+    "address": "Alamat",
+    "copyright": "© {year} Wiwekaitech. Hak cipta dilindungi.",
+    "followUs": "Ikuti Kami"
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "notFound": "Halaman tidak ditemukan",
+    "backHome": "Kembali ke Beranda",
+    "readMore": "Baca Selengkapnya",
+    "learnMore": "Pelajari Lebih Lanjut",
+    "getStarted": "Mulai Sekarang",
+    "viewAll": "Lihat Semua"
+  },
+  "seo": {
+    "home": {
+      "title": "Perusahaan Pengembangan ERP Custom | Wiwekaitech",
+      "description": "Ahli pengembangan ERP custom, sistem akuntansi, dan aplikasi web enterprise. Engineering AI-accelerated dengan pengalaman 10+ tahun. Delivery cepat, arsitektur scalable."
+    },
+    "about": {
+      "title": "Tentang Kami | Wiwekaitech - Ahli Software Enterprise",
+      "description": "Pelajari tentang Wiwekaitech, perusahaan pengembangan ERP dan software enterprise khusus dengan pengalaman 10+ tahun dalam membangun sistem bisnis scalable."
+    },
+    "products": {
+      "title": "Produk & Layanan Kami | Solusi ERP | Wiwekaitech",
+      "description": "Sistem ERP custom, akuntansi berbasis web, manajemen penjualan & inventory, platform manufaktur. Software enterprise-grade disesuaikan dengan bisnis Anda."
+    },
+    "projects": {
+      "title": "Portfolio Proyek | Studi Kasus Implementasi ERP | Wiwekaitech",
+      "description": "Jelajahi portfolio proyek ERP dan software enterprise kami yang sukses. Hasil nyata dari sektor pemerintah, manufaktur, dan bisnis."
+    },
+    "tutorial": {
+      "title": "Tutorial Coding | FastAPI, Laravel, Pengembangan ERP | Wiwekaitech",
+      "description": "Belajar membangun sistem ERP dan aplikasi web scalable. Tutorial expert tentang FastAPI, Laravel, desain database, dan arsitektur enterprise."
+    },
+    "blog": {
+      "title": "Blog | Insight Software Enterprise | Wiwekaitech",
+      "description": "Artikel teknis dan thought leadership tentang pengembangan software enterprise, AI tools, dan best practice pengembangan."
+    },
+    "contact": {
+      "title": "Hubungi Kami | Mulai Proyek ERP Anda | Wiwekaitech",
+      "description": "Hubungi tim kami untuk diskusikan kebutuhan ERP custom atau software enterprise Anda. Konsultasi gratis tersedia."
+    }
+  }
+}
