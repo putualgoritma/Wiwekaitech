@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from app.config import settings
 from app.database import engine, Base
 from app.routers import products, projects, tutorials, blog, contact, auth
-from app.routers import admin_products, admin_projects, admin_tutorials, admin_blog, admin_users, admin_templates
+from app.routers import admin_products, admin_projects, admin_tutorials, admin_blog, admin_users, admin_templates, admin_upload
 import os
 
 # Create database tables
@@ -49,6 +49,7 @@ app.include_router(admin_projects.router, prefix=f"{settings.API_PREFIX}/admin")
 app.include_router(admin_tutorials.router, prefix=f"{settings.API_PREFIX}/admin")
 app.include_router(admin_blog.router, prefix=f"{settings.API_PREFIX}/admin")
 app.include_router(admin_users.router, prefix=f"{settings.API_PREFIX}/admin")
+app.include_router(admin_upload.router, prefix=f"{settings.API_PREFIX}/admin")
 
 # Include admin template routes (for rendering HTML)
 app.include_router(admin_templates.router)

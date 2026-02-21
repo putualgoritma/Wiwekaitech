@@ -1,17 +1,30 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useApiData } from '@/hooks/use-api-data';
 import type { BlogPost } from '@/lib/api-schemas';
 import Container from '@/components/shared/Container';
 import Section from '@/components/shared/Section';
 import Card from '@/components/shared/Card';
+import { API_BASE_URL } from '@/lib/api';
 
 export default function BlogPageClient() {
   const t = useTranslations('blog');
   const tCommon = useTranslations('common');
   const { data, loading, error } = useApiData<BlogPost[]>('/blog', { page_size: 10 });
+
+  // Get full image URL
+  const getImageUrl = (imageUrl: string | null) => {
+    if (!imageUrl) return null;
+    return imageUrl.startsWith('http')
+      ? imageUrl
+      : `${API_BASE_URL.replace('/api/v1', '')}${imageUrl}`;
+  };
+
+  // Fallback image
+  const fallbackImage = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80';
 
   return (
     <Section>
@@ -58,24 +71,50 @@ export default function BlogPageClient() {
         )}
 
         {data && data.length > 0 && (
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-4xl mx-auto">
             {data.map((post) => (
-              <Card key={post.id} hover>
-                <div className="p-6">
-                  <h2 className="text-2xl font-semibold text-secondary-900 dark:text-white mb-2">
-                    {post.title}
-                  </h2>
-                  <p className="text-secondary-600 dark:text-secondary-400 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-sm text-secondary-500 dark:text-secondary-400">
-                    <span>
-                      {t('by')} {post.author_name} {t('on')} {post.published_at}
-                    </span>
-                    <span>{t('readingTime', { minutes: post.reading_time })}</span>
+              <Link key={post.id} href={`/blog/${post.slug}`} className="block mb-6">
+                <Card hover>
+                  <div className="grid md:grid-cols-[200px_1fr] gap-4">
+                    {/* Thumbnail */}
+                    <div className="relative aspect-video md:aspect-square rounded-lg overflow-hidden bg-secondary-100 dark:bg-secondary-800">
+                      <Image
+                        src={getImageUrl(post.image_url) || fallbackImage}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                        sizes="200px"
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-4 md:p-6 flex flex-col justify-between">
+                      <div>
+                        {post.category && (
+                          <p className="text-green-600 dark:text-green-500 text-xs font-semibold mb-2">
+                            {post.category.name}
+                          </p>
+                        )}
+                        <h2 className="text-xl md:text-2xl font-semibold text-secondary-900 dark:text-white mb-2 line-clamp-2">
+                          {post.title}
+                        </h2>
+                        <p className="text-secondary-600 dark:text-secondary-400 mb-3 line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between text-sm text-secondary-500 dark:text-secondary-400">
+                        <span>
+                          {post.author_name && `${post.author_name} • `}
+                          {post.published_at && new Date(post.published_at).toLocaleDateString()}
+                        </span>
+                        {post.reading_time > 0 && (
+                          <span>{post.reading_time} min read</span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         )}

@@ -4,17 +4,182 @@
 <div class="page-header"><h2>Edit Blog Post</h2></div>
 <form id="form" class="content-form">
     <div class="form-group">
+        <label>Category:
+            <select id="category_id" required>
+                <option value="">Select category...</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}" {% if post.category_id == category.id %}selected{% endif %}>{{ category.name_en }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+    
+    <div class="form-group">
         <label>Title (EN): <input type="text" id="title_en" value="{{ post.title_en }}" required></label>
     </div>
     <div class="form-group">
         <label>Title (ID): <input type="text" id="title_id" value="{{ post.title_id }}" required></label>
     </div>
     <div class="form-group">
-        <label>Author: <input type="text" id="author_name" value="{{ post.author_name or '' }}"></label>
+        <label>Slug: <input type="text" id="slug" value="{{ post.slug }}" required></label>
     </div>
+    
+    <div class="form-group">
+        <label>Excerpt (EN): <textarea id="excerpt_en" rows="3" required>{{ post.excerpt_en }}</textarea></label>
+    </div>
+    <div class="form-group">
+        <label>Excerpt (ID): <textarea id="excerpt_id" rows="3" required>{{ post.excerpt_id }}</textarea></label>
+    </div>
+    
+    <div class="form-group">
+        <label>Content (EN): <textarea id="content_en" rows="10" required>{{ post.content_en }}</textarea></label>
+    </div>
+    <div class="form-group">
+        <label>Content (ID): <textarea id="content_id" rows="10" required>{{ post.content_id }}</textarea></label>
+    </div>
+    
+    <div class="form-group">
+        <label>Featured Image:</label>
+        {% if post.image_url %}
+        <div style="margin-bottom: 10px;">
+            <p>Current image:</p>
+            <img src="{{ post.image_url }}" alt="Current" style="max-width: 300px; max-height: 200px; border: 1px solid #ddd; padding: 5px;">
+        </div>
+        {% endif %}
+        <label>
+            <input type="file" id="image_file" accept="image/*">
+            <small>Leave empty to keep current image</small>
+        </label>
+        <div id="image_preview" style="margin-top: 10px; display: none;">
+            <p>New image preview:</p>
+            <img id="preview_img" src="" alt="Preview" style="max-width: 300px; max-height: 200px; border: 1px solid #ddd; padding: 5px;">
+            <p id="upload_status" style="margin-top: 5px; font-size: 14px;"></p>
+        </div>
+        <input type="hidden" id="image_url" value="{{ post.image_url or '' }}">
+    </div>
+    
+    <div class="form-group">
+        <label>Author Name: <input type="text" id="author_name" value="{{ post.author_name or '' }}"></label>
+    </div>
+    
+    <div class="form-group">
+        <label>Reading Time (minutes): <input type="number" id="reading_time" min="1" value="{{ post.reading_time or '' }}"></label>
+    </div>
+    
+    <div class="form-group">
+        <label>Tags (comma-separated): <input type="text" id="tags" value="{% if post.tags %}{{ post.tags|join(', ') }}{% endif %}" placeholder="e.g., AI, Machine Learning, Tutorial"></label>
+    </div>
+    
+    <div class="form-group">
+        <label>
+            <input type="checkbox" id="is_published" {% if post.is_published %}checked{% endif %}> Published
+        </label>
+    </div>
+    
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Update</button>
         <a href="/admin/blog" class="btn btn-secondary">Cancel</a>
     </div>
 </form>
+
+<script>
+const form = document.getElementById('form');
+const imageFile = document.getElementById('image_file');
+const imagePreview = document.getElementById('image_preview');
+const previewImg = document.getElementById('preview_img');
+const uploadStatus = document.getElementById('upload_status');
+const imageUrlInput = document.getElementById('image_url');
+
+// Handle image file selection and preview
+imageFile.addEventListener('change', async function(e) {
+    const file = e.target.files[0];
+    if (!file) {
+        imagePreview.style.display = 'none';
+        return;
+    }
+    
+    // Show preview
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        previewImg.src = e.target.result;
+        imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+    
+    // Upload image
+    uploadStatus.textContent = 'Uploading...';
+    uploadStatus.style.color = '#666';
+    
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    try {
+        const response = await fetch('/api/v1/admin/upload/blog-image', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include'
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+            imageUrlInput.value = result.data.url;
+            uploadStatus.textContent = '✓ Image uploaded successfully';
+            uploadStatus.style.color = '#28a745';
+        } else {
+            uploadStatus.textContent = '✗ Upload failed: ' + (result.detail || 'Unknown error');
+            uploadStatus.style.color = '#dc3545';
+        }
+    } catch (error) {
+        uploadStatus.textContent = '✗ Upload error: ' + error.message;
+        uploadStatus.style.color = '#dc3545';
+    }
+});
+
+// Handle form submission
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Parse tags
+    const tagsInput = document.getElementById('tags').value;
+    const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(t => t) : [];
+    
+    const payload = {
+        category_id: parseInt(document.getElementById('category_id').value),
+        title_en: document.getElementById('title_en').value,
+        title_id: document.getElementById('title_id').value,
+        slug: document.getElementById('slug').value,
+        excerpt_en: document.getElementById('excerpt_en').value,
+        excerpt_id: document.getElementById('excerpt_id').value,
+        content_en: document.getElementById('content_en').value,
+        content_id: document.getElementById('content_id').value,
+        author_name: document.getElementById('author_name').value || null,
+        reading_time: parseInt(document.getElementById('reading_time').value) || null,
+        image_url: imageUrlInput.value || null,
+        tags: tags,
+        is_published: document.getElementById('is_published').checked,
+        published_at: document.getElementById('is_published').checked ? '{{ post.published_at or "" }}' || new Date().toISOString() : null
+    };
+    
+    try {
+        const response = await fetch('/api/v1/admin/blog/{{ post.id }}', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            credentials: 'include'
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+            alert('Blog post updated successfully!');
+            window.location.href = '/admin/blog';
+        } else {
+            alert('Error: ' + (result.detail || 'Failed to update blog post'));
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});
+</script>
 {% endblock %}

@@ -213,7 +213,7 @@ async def tutorial_create_page(
         raise HTTPException(status_code=403, detail="Forbidden")
     
     from app.services.category_service import CategoryService
-    categories = CategoryService.get_all_categories(db)
+    categories = CategoryService.get_categories_by_type(db, "tutorial")
     
     return templates.TemplateResponse(
         "tutorials/create.html",
@@ -242,7 +242,7 @@ async def tutorial_edit_page(
     if not tutorial:
         raise HTTPException(status_code=404, detail="Tutorial not found")
     
-    categories = CategoryService.get_all_categories(db)
+    categories = CategoryService.get_categories_by_type(db, "tutorial")
     
     return templates.TemplateResponse(
         "tutorials/edit.html",
@@ -287,7 +287,7 @@ async def blog_create_page(
         raise HTTPException(status_code=403, detail="Forbidden")
     
     from app.services.category_service import CategoryService
-    categories = CategoryService.get_all_categories(db)
+    categories = CategoryService.get_categories_by_type(db, "blog")
     
     return templates.TemplateResponse(
         "blog/create.html",
@@ -316,7 +316,7 @@ async def blog_edit_page(
     if not post:
         raise HTTPException(status_code=404, detail="Blog post not found")
     
-    categories = CategoryService.get_all_categories(db)
+    categories = CategoryService.get_categories_by_type(db, "blog")
     
     return templates.TemplateResponse(
         "blog/edit.html",
