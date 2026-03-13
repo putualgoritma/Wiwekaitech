@@ -57,6 +57,38 @@
       "advanced": "Advanced"
     }
   },
+  "pythonBasic": {
+    "hero": {
+      "title": "Basic Python for Future Developers",
+      "subtitle": "A structured programming foundation designed to transform beginners into future backend developers.",
+      "cta": "Start Learning",
+      "author": "By {author}",
+      "lastUpdated": "Last updated: {date}"
+    },
+    "toc": {
+      "title": "Table of Contents",
+      "preface": "Preface",
+      "part": "Part {number}",
+      "chapter": "Chapter {number}",
+      "finalChapter": "Final Chapter",
+      "appendix": "Appendix",
+      "readingTime": "{minutes} min read"
+    },
+    "chapter": {
+      "objectives": "Learning Objectives",
+      "exercises": "Practice Exercises",
+      "reflection": "Reflection",
+      "previous": "Previous Chapter",
+      "next": "Next Chapter",
+      "backToTOC": "Table of Contents"
+    },
+    "path": {
+      "title": "Your Learning Path",
+      "beginner": "Complete Beginner",
+      "backend": "Backend Developer",
+      "erp": "ERP Specialist"
+    }
+  },
   "blog": {
     "title": "Latest Insights",
     "subtitle": "Technical articles and thought leadership on enterprise software development",
@@ -156,6 +188,10 @@
     "tutorial": {
       "title": "Coding Tutorials | FastAPI, Laravel, ERP Development | Wiwekaitech",
       "description": "Learn to build scalable ERP systems and web applications. Expert tutorials on FastAPI, Laravel, database design, and enterprise architecture."
+    },
+    "pythonBasic": {
+      "title": "Basic Python for Future Developers | Structured Python Tutorial",
+      "description": "A complete Python basic tutorial designed for future backend developers. Learn programming fundamentals, OOP, and project-based implementation step by step."
     },
     "blog": {
       "title": "Blog | Enterprise Software Insights | Wiwekaitech",

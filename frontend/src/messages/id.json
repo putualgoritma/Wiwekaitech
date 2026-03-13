@@ -57,6 +57,38 @@
       "advanced": "Lanjutan"
     }
   },
+  "pythonBasic": {
+    "hero": {
+      "title": "Python Dasar untuk Developer Masa Depan",
+      "subtitle": "Fondasi pemrograman terstruktur yang dirancang untuk mengubah pemula menjadi backend developer masa depan.",
+      "cta": "Mulai Belajar",
+      "author": "Oleh {author}",
+      "lastUpdated": "Terakhir diperbarui: {date}"
+    },
+    "toc": {
+      "title": "Daftar Isi",
+      "preface": "Kata Pengantar",
+      "part": "Bagian {number}",
+      "chapter": "Bab {number}",
+      "finalChapter": "Bab Penutup",
+      "appendix": "Lampiran",
+      "readingTime": "{minutes} menit baca"
+    },
+    "chapter": {
+      "objectives": "Tujuan Pembelajaran",
+      "exercises": "Latihan Praktek",
+      "reflection": "Refleksi",
+      "previous": "Bab Sebelumnya",
+      "next": "Bab Berikutnya",
+      "backToTOC": "Daftar Isi"
+    },
+    "path": {
+      "title": "Jalur Pembelajaran Anda",
+      "beginner": "Pemula",
+      "backend": "Backend Developer",
+      "erp": "Spesialis ERP"
+    }
+  },
   "blog": {
     "title": "Insight Terbaru",
     "subtitle": "Artikel teknis dan thought leadership tentang pengembangan software enterprise",
@@ -156,6 +188,10 @@
     "tutorial": {
       "title": "Tutorial Coding | FastAPI, Laravel, Pengembangan ERP | Wiwekaitech",
       "description": "Belajar membangun sistem ERP dan aplikasi web scalable. Tutorial expert tentang FastAPI, Laravel, desain database, dan arsitektur enterprise."
+    },
+    "pythonBasic": {
+      "title": "Python Dasar untuk Developer Masa Depan | Tutorial Python Terstruktur",
+      "description": "Tutorial Python dasar lengkap yang dirancang untuk calon backend developer. Pelajari fundamental pemrograman, OOP, dan implementasi berbasis proyek langkah demi langkah."
     },
     "blog": {
       "title": "Blog | Insight Software Enterprise | Wiwekaitech",
