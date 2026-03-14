@@ -94,6 +94,7 @@ export const TutorialSchema = z.object({
   slug: z.string(),
   excerpt: z.string(),
   content: z.string().optional(),
+  tutorial_url: z.string().nullable().optional(),
   difficulty_level: z.enum(['beginner', 'intermediate', 'advanced']),
   reading_time: z.number().int(),
   image_url: z.string().nullable(),

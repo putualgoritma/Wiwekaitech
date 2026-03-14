@@ -4,6 +4,17 @@
 <div class="page-header"><h2>Create Tutorial</h2></div>
 <form id="form" class="content-form">
     <div class="form-group">
+        <label>Category:
+            <select id="category_id" required>
+                <option value="">Select category...</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name_en }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+
+    <div class="form-group">
         <label>Title (EN): <input type="text" id="title_en" required></label>
     </div>
     <div class="form-group">
@@ -12,15 +23,162 @@
     <div class="form-group">
         <label>Slug: <input type="text" id="slug" required></label>
     </div>
+
     <div class="form-group">
-        <label>Content (EN): <textarea id="content_en" required></textarea></label>
+        <label>Excerpt (EN): <textarea id="excerpt_en" rows="3" required></textarea></label>
     </div>
     <div class="form-group">
-        <label>Content (ID): <textarea id="content_id" required></textarea></label>
+        <label>Excerpt (ID): <textarea id="excerpt_id" rows="3" required></textarea></label>
     </div>
+
+    <div class="form-group">
+        <label>Content (EN): <textarea id="content_en" rows="10" required></textarea></label>
+    </div>
+    <div class="form-group">
+        <label>Content (ID): <textarea id="content_id" rows="10" required></textarea></label>
+    </div>
+
+    <div class="form-group">
+        <label>Difficulty:
+            <select id="difficulty_level" required>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>Reading Time (minutes): <input type="number" id="reading_time" min="0"></label>
+    </div>
+
+    <div class="form-group">
+        <label>Tutorial URL: <input type="text" id="tutorial_url" placeholder="tutorial/python-basic or https://..." ></label>
+    </div>
+
+    <div class="form-group">
+        <label>Image URL: <input type="url" id="image_url" placeholder="https://..."></label>
+    </div>
+
+    <div class="form-group">
+        <label>Featured Image:
+            <input type="file" id="image_file" accept="image/*">
+        </label>
+        <div id="image_preview" class="image-preview image-preview-hidden">
+            <img id="preview_img" class="preview-image" src="" alt="Preview">
+            <p id="upload_status" class="upload-status"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Tags (comma-separated): <input type="text" id="tags" placeholder="e.g., Python, Backend, FastAPI"></label>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" id="is_published"> Published
+        </label>
+    </div>
+
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Create</button>
         <a href="/admin/tutorials" class="btn btn-secondary">Cancel</a>
     </div>
 </form>
+
+<script>
+const form = document.getElementById('form');
+const imageFile = document.getElementById('image_file');
+const imagePreview = document.getElementById('image_preview');
+const previewImg = document.getElementById('preview_img');
+const uploadStatus = document.getElementById('upload_status');
+const imageUrlInput = document.getElementById('image_url');
+
+imageFile.addEventListener('change', async function(e) {
+    const file = e.target.files[0];
+    if (!file) {
+        imagePreview.style.display = 'none';
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+        previewImg.src = evt.target.result;
+        imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+
+    uploadStatus.textContent = 'Uploading...';
+    uploadStatus.style.color = '#666';
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await fetch('/api/v1/admin/upload/tutorial-image', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include'
+        });
+
+        const result = await response.json();
+        if (response.ok && result.success) {
+            imageUrlInput.value = result.data.url;
+            uploadStatus.textContent = '✓ Image uploaded successfully';
+            uploadStatus.style.color = '#28a745';
+        } else {
+            uploadStatus.textContent = '✗ Upload failed: ' + (result.detail || 'Unknown error');
+            uploadStatus.style.color = '#dc3545';
+        }
+    } catch (error) {
+        uploadStatus.textContent = '✗ Upload error: ' + error.message;
+        uploadStatus.style.color = '#dc3545';
+    }
+});
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const tagsInput = document.getElementById('tags').value;
+    const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(t => t) : [];
+    const isPublished = document.getElementById('is_published').checked;
+
+    const payload = {
+        category_id: parseInt(document.getElementById('category_id').value),
+        title_en: document.getElementById('title_en').value,
+        title_id: document.getElementById('title_id').value,
+        slug: document.getElementById('slug').value,
+        excerpt_en: document.getElementById('excerpt_en').value,
+        excerpt_id: document.getElementById('excerpt_id').value,
+        content_en: document.getElementById('content_en').value,
+        content_id: document.getElementById('content_id').value,
+        difficulty_level: document.getElementById('difficulty_level').value,
+        reading_time: parseInt(document.getElementById('reading_time').value) || null,
+        image_url: imageUrlInput.value || null,
+        tutorial_url: document.getElementById('tutorial_url').value || null,
+        tags: tags,
+        is_published: isPublished,
+        published_at: isPublished ? new Date().toISOString() : null
+    };
+
+    try {
+        const response = await fetch('/api/v1/admin/tutorials', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            credentials: 'include'
+        });
+
+        const result = await response.json();
+        if (response.ok && result.success) {
+            alert('Tutorial created successfully!');
+            window.location.href = '/admin/tutorials';
+        } else {
+            alert('Error: ' + (result.detail || 'Failed to create tutorial'));
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});
+</script>
 {% endblock %}

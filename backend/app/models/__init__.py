@@ -86,6 +86,7 @@ class Tutorial(Base):
     difficulty_level = Column(Enum('beginner', 'intermediate', 'advanced'), nullable=False, index=True)
     reading_time = Column(Integer, nullable=True)
     image_url = Column(String(500), nullable=True)
+    tutorial_url = Column(String(500), nullable=True)
     tags = Column(JSON, nullable=True)
     is_published = Column(Boolean, default=False, index=True)
     published_at = Column(DateTime, nullable=True, index=True)

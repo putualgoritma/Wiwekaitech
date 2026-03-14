@@ -69,6 +69,7 @@ class TutorialService:
         difficulty_level: str = "beginner",
         reading_time: Optional[int] = None,
         image_url: Optional[str] = None,
+        tutorial_url: Optional[str] = None,
         tags: Optional[list] = None,
         is_published: bool = False,
         published_at: Optional[datetime] = None,
@@ -91,6 +92,7 @@ class TutorialService:
             difficulty_level=difficulty_level,
             reading_time=reading_time,
             image_url=image_url,
+            tutorial_url=tutorial_url,
             tags=tags,
             is_published=is_published,
             published_at=published_at,
@@ -117,6 +119,7 @@ class TutorialService:
         difficulty_level: Optional[str] = None,
         reading_time: Optional[int] = None,
         image_url: Optional[str] = None,
+        tutorial_url: Optional[str] = None,
         tags: Optional[list] = None,
         is_published: Optional[bool] = None,
         published_at: Optional[datetime] = None,
@@ -155,6 +158,8 @@ class TutorialService:
             tutorial.reading_time = reading_time
         if image_url is not None:
             tutorial.image_url = image_url
+        if tutorial_url is not None:
+            tutorial.tutorial_url = tutorial_url
         if tags is not None:
             tutorial.tags = tags
         if is_published is not None:
@@ -195,6 +200,7 @@ class TutorialService:
             "difficulty": tutorial.difficulty_level,
             "reading_time": tutorial.reading_time,
             "image_url": tutorial.image_url,
+            "tutorial_url": tutorial.tutorial_url,
             "tags": tutorial.tags or [],
             "published_at": tutorial.published_at.isoformat() if tutorial.published_at else None
         }

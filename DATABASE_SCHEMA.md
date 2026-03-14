@@ -90,6 +90,7 @@ CREATE TABLE tutorials (
     difficulty ENUM('beginner', 'intermediate', 'advanced') DEFAULT 'beginner',
     duration_minutes INT,
     tags JSON,
+    tutorial_url VARCHAR(500),
     view_count INT DEFAULT 0,
     is_published BOOLEAN DEFAULT TRUE,
     published_at TIMESTAMP NULL,

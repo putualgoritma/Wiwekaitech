@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 import { useApiData } from '@/hooks/use-api-data';
 import type { Tutorial } from '@/lib/api-schemas';
 import Container from '@/components/shared/Container';
@@ -10,9 +11,31 @@ import Card from '@/components/shared/Card';
 import Badge from '@/components/shared/Badge';
 
 export default function TutorialPageClient() {
+  const locale = useLocale();
   const t = useTranslations('tutorial');
   const tCommon = useTranslations('common');
   const { data, loading, error } = useApiData<Tutorial[]>('/tutorials', { page_size: 12 });
+
+  const resolveTutorialHref = (tutorialUrl: string | null | undefined, slug: string) => {
+    if (!tutorialUrl || tutorialUrl.trim() === '') {
+      return `/${locale}/tutorial/${slug}`;
+    }
+
+    const url = tutorialUrl.trim();
+    if (/^https?:\/\//i.test(url)) {
+      return url;
+    }
+
+    if (/^\/(en|id)\//i.test(url)) {
+      return url;
+    }
+
+    if (url.startsWith('/')) {
+      return `/${locale}${url}`;
+    }
+
+    return `/${locale}/${url}`;
+  };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -74,27 +97,35 @@ export default function TutorialPageClient() {
         {data && data.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.map((tutorial) => (
-              <Card key={tutorial.id} hover>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    {tutorial.category && (
-                      <Badge variant="secondary">{tutorial.category.name}</Badge>
-                    )}
-                    <Badge variant={getDifficultyColor(tutorial.difficulty_level) as any}>
-                      {t(`difficulty.${tutorial.difficulty_level}`)}
-                    </Badge>
+              <Link
+                key={tutorial.id}
+                href={resolveTutorialHref(tutorial.tutorial_url, tutorial.slug)}
+                target={tutorial.tutorial_url && /^https?:\/\//i.test(tutorial.tutorial_url) ? '_blank' : undefined}
+                rel={tutorial.tutorial_url && /^https?:\/\//i.test(tutorial.tutorial_url) ? 'noopener noreferrer' : undefined}
+                className="block"
+              >
+                <Card hover>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      {tutorial.category && (
+                        <Badge variant="secondary">{tutorial.category.name}</Badge>
+                      )}
+                      <Badge variant={getDifficultyColor(tutorial.difficulty_level) as any}>
+                        {t(`difficulty.${tutorial.difficulty_level}`)}
+                      </Badge>
+                    </div>
+                    <h2 className="text-lg font-semibold text-secondary-900 dark:text-white mb-3">
+                      {tutorial.title}
+                    </h2>
+                    <p className="text-secondary-600 dark:text-secondary-400 mb-4 text-sm">
+                      {tutorial.excerpt}
+                    </p>
+                    <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                      {t('readingTime', { minutes: tutorial.reading_time })}
+                    </p>
                   </div>
-                  <h2 className="text-lg font-semibold text-secondary-900 dark:text-white mb-3">
-                    {tutorial.title}
-                  </h2>
-                  <p className="text-secondary-600 dark:text-secondary-400 mb-4 text-sm">
-                    {tutorial.excerpt}
-                  </p>
-                  <p className="text-sm text-secondary-500 dark:text-secondary-400">
-                    {t('readingTime', { minutes: tutorial.reading_time })}
-                  </p>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         )}

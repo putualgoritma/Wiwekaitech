@@ -70,6 +70,7 @@ class TutorialCreateUpdate(BaseModel):
     difficulty_level: str = Field("beginner")  # beginner, intermediate, advanced
     reading_time: Optional[int] = Field(None, ge=0)
     image_url: Optional[str] = Field(None, max_length=500)
+    tutorial_url: Optional[str] = Field(None, max_length=500)
     tags: Optional[List[str]] = None
     is_published: bool = Field(False)
     published_at: Optional[datetime] = None

@@ -33,6 +33,7 @@ export interface Tutorial {
   };
   title: string;
   slug: string;
+  tutorial_url?: string;
   excerpt: string;
   content?: string;
   difficulty_level: 'beginner' | 'intermediate' | 'advanced';

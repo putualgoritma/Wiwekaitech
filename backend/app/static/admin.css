@@ -335,6 +335,7 @@ body {
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
+.form-group input[type="url"],
 .form-group input[type="number"],
 .form-group textarea,
 .form-group select {
@@ -507,6 +508,32 @@ body {
     padding: 12px;
     font-size: 16px;
     font-weight: 600;
+}
+
+/* Media preview helpers */
+.image-preview {
+    margin-top: 10px;
+}
+
+.image-preview-hidden {
+    display: none;
+}
+
+.image-block {
+    margin-bottom: 10px;
+}
+
+.preview-image,
+.current-image {
+    max-width: 300px;
+    max-height: 200px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.upload-status {
+    margin-top: 5px;
+    font-size: 14px;
 }
 
 /* Responsive */
