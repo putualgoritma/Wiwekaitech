@@ -66,6 +66,7 @@ class TutorialService:
         excerpt_id: str,
         content_en: str,
         content_id: str,
+        icon: Optional[str] = None,
         difficulty_level: str = "beginner",
         reading_time: Optional[int] = None,
         image_url: Optional[str] = None,
@@ -89,6 +90,7 @@ class TutorialService:
             excerpt_id=excerpt_id,
             content_en=content_en,
             content_id=content_id,
+            icon=icon,
             difficulty_level=difficulty_level,
             reading_time=reading_time,
             image_url=image_url,
@@ -116,6 +118,7 @@ class TutorialService:
         excerpt_id: Optional[str] = None,
         content_en: Optional[str] = None,
         content_id: Optional[str] = None,
+        icon: Optional[str] = None,
         difficulty_level: Optional[str] = None,
         reading_time: Optional[int] = None,
         image_url: Optional[str] = None,
@@ -152,6 +155,8 @@ class TutorialService:
             tutorial.content_en = content_en
         if content_id is not None:
             tutorial.content_id = content_id
+        if icon is not None:
+            tutorial.icon = icon
         if difficulty_level is not None:
             tutorial.difficulty_level = difficulty_level
         if reading_time is not None:
@@ -197,7 +202,9 @@ class TutorialService:
                 tutorial, ["title", "excerpt", "content"], lang
             ),
             "slug": tutorial.slug,
+            "icon": tutorial.icon,
             "difficulty": tutorial.difficulty_level,
+            "difficulty_level": tutorial.difficulty_level,
             "reading_time": tutorial.reading_time,
             "image_url": tutorial.image_url,
             "tutorial_url": tutorial.tutorial_url,

@@ -536,6 +536,10 @@ body {
     font-size: 14px;
 }
 
+.is-hidden {
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .navbar {

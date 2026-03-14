@@ -15,6 +15,7 @@ export interface Project {
   slug: string;
   summary: string;
   description?: string;
+  icon?: string;
   client_name?: string;
   industry?: string;
   technologies: string[];
@@ -36,6 +37,8 @@ export interface Tutorial {
   tutorial_url?: string;
   excerpt: string;
   content?: string;
+  icon?: string;
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
   difficulty_level: 'beginner' | 'intermediate' | 'advanced';
   reading_time?: number;
   image_url?: string;

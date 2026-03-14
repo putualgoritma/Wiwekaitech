@@ -19,6 +19,10 @@
         <label for="slug">Slug:</label>
         <input type="text" id="slug" name="slug" value="{{ project.slug }}" required>
     </div>
+    <div class="form-group">
+        <label for="icon">Icon:</label>
+        <input type="text" id="icon" name="icon" value="{{ project.icon or '' }}" maxlength="100" placeholder="e.g. 🚀 or icon class">
+    </div>
     <div class="form-row">
         <div class="form-group">
             <label for="summary_en">Summary (English):</label>
@@ -53,7 +57,7 @@
         <button type="submit" class="btn btn-primary">Update Project</button>
         <a href="/admin/projects" class="btn btn-secondary">Cancel</a>
     </div>
-    <div id="message" class="message" style="display: none;"></div>
+    <div id="message" class="message is-hidden"></div>
 </form>
 <script>
 const projectId = {{ project.id }};
@@ -67,6 +71,7 @@ document.getElementById('projectForm').addEventListener('submit', async (e) => {
         summary_id: document.getElementById('summary_id').value,
         description_en: document.getElementById('description_en').value,
         description_id: document.getElementById('description_id').value,
+        icon: document.getElementById('icon').value || null,
         client_name: document.getElementById('client_name').value || null,
         industry: document.getElementById('industry').value || null,
         is_active: true,

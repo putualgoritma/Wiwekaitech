@@ -36,7 +36,7 @@ export default function ContactForm() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <span className="text-gray-800 dark:text-gray-200">Jakarta, Indonesia</span>
+                <span className="text-gray-800 dark:text-gray-200">Bali, Indonesia</span>
               </div>
 
               {/* Phone */}

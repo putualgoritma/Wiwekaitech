@@ -64,6 +64,7 @@ class ProjectService:
         summary_id: str,
         description_en: str,
         description_id: str,
+        icon: Optional[str] = None,
         client_name: Optional[str] = None,
         industry: Optional[str] = None,
         technologies: Optional[list] = None,
@@ -88,6 +89,7 @@ class ProjectService:
             summary_id=summary_id,
             description_en=description_en,
             description_id=description_id,
+            icon=icon,
             client_name=client_name,
             industry=industry,
             technologies=technologies,
@@ -116,6 +118,7 @@ class ProjectService:
         summary_id: Optional[str] = None,
         description_en: Optional[str] = None,
         description_id: Optional[str] = None,
+        icon: Optional[str] = None,
         client_name: Optional[str] = None,
         industry: Optional[str] = None,
         technologies: Optional[list] = None,
@@ -152,6 +155,8 @@ class ProjectService:
             project.description_en = description_en
         if description_id is not None:
             project.description_id = description_id
+        if icon is not None:
+            project.icon = icon
         if client_name is not None:
             project.client_name = client_name
         if industry is not None:
@@ -197,6 +202,7 @@ class ProjectService:
             **BaseFormatter.format_translations(
                 project, ["title", "summary", "description", "metrics"], lang
             ),
+            "icon": project.icon,
             "client_name": project.client_name,
             "industry": project.industry,
             "technologies": project.technologies or [],

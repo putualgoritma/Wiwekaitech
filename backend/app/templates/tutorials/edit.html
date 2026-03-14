@@ -25,6 +25,10 @@
     </div>
 
     <div class="form-group">
+        <label>Icon: <input type="text" id="icon" value="{{ tutorial.icon or '' }}" maxlength="100" placeholder="e.g. 📘 or icon class"></label>
+    </div>
+
+    <div class="form-group">
         <label>Excerpt (EN): <textarea id="excerpt_en" rows="3" required>{{ tutorial.excerpt_en }}</textarea></label>
     </div>
     <div class="form-group">
@@ -163,6 +167,7 @@ form.addEventListener('submit', async function(e) {
         excerpt_id: document.getElementById('excerpt_id').value,
         content_en: document.getElementById('content_en').value,
         content_id: document.getElementById('content_id').value,
+        icon: document.getElementById('icon').value || null,
         difficulty_level: document.getElementById('difficulty_level').value,
         reading_time: parseInt(document.getElementById('reading_time').value) || null,
         image_url: imageUrlInput.value || null,

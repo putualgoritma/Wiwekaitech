@@ -37,6 +37,7 @@ class ProjectCreateUpdate(BaseModel):
     summary_id: str = Field(..., min_length=1)
     description_en: str = Field(..., min_length=1)
     description_id: str = Field(..., min_length=1)
+    icon: Optional[str] = Field(None, max_length=100)
     client_name: Optional[str] = Field(None, max_length=200)
     industry: Optional[str] = Field(None, max_length=100)
     technologies: Optional[List[str]] = None
@@ -67,6 +68,7 @@ class TutorialCreateUpdate(BaseModel):
     excerpt_id: str = Field(..., min_length=1)
     content_en: str = Field(..., min_length=1)
     content_id: str = Field(..., min_length=1)
+    icon: Optional[str] = Field(None, max_length=100)
     difficulty_level: str = Field("beginner")  # beginner, intermediate, advanced
     reading_time: Optional[int] = Field(None, ge=0)
     image_url: Optional[str] = Field(None, max_length=500)

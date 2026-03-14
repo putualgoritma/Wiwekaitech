@@ -6,7 +6,7 @@ export const SOCIAL_LINKS = {
   linkedin: 'https://linkedin.com/company/wiwekaitech',
   twitter: 'https://twitter.com/wiwekaitech',
   email: 'info@wiwekaitech.com',
-  phone: '+62 812 3456 7890',
+  phone: '+62 821 4786 0693',
 };
 
 export const NAVIGATION_LINKS = [
