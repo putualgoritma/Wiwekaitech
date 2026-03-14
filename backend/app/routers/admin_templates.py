@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.utils.auth import get_current_user
+from app.services.auth_service import AuthService
 from app.models import User
 import os
 
@@ -13,6 +14,21 @@ templates_dir = os.path.join(os.path.dirname(__file__), "..", "templates")
 templates = Jinja2Templates(directory=templates_dir)
 
 router = APIRouter(prefix="", tags=["admin-templates"])
+
+
+@router.get("/admin")
+@router.get("/admin/")
+async def admin_entry(request: Request, db: Session = Depends(get_db)):
+    """Redirect /admin to dashboard if authenticated, otherwise to login."""
+    token = request.cookies.get("access_token")
+    if token:
+        user_data = AuthService.verify_jwt_token(token)
+        if user_data:
+            user = AuthService.get_user_by_id(db, user_data["user_id"])
+            if user and user.is_active:
+                return RedirectResponse(url="/admin/dashboard", status_code=302)
+
+    return RedirectResponse(url="/admin/login", status_code=302)
 
 
 @router.get("/admin/login", response_class=HTMLResponse)

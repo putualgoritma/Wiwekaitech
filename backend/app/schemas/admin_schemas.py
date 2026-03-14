@@ -11,6 +11,7 @@ class ProductCreateUpdate(BaseModel):
     description_en: str = Field(..., min_length=1)
     description_id: str = Field(..., min_length=1)
     icon: Optional[str] = Field(None, max_length=100)
+    image_url: Optional[str] = Field(None, max_length=500)
     features_en: Optional[List[str]] = None
     features_id: Optional[List[str]] = None
     product_url: Optional[str] = Field(None, max_length=500)

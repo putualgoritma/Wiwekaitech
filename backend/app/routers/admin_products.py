@@ -63,8 +63,10 @@ async def create_product(
         description_en=payload.description_en,
         description_id=payload.description_id,
         icon=payload.icon,
+        image_url=payload.image_url,
         features_en=payload.features_en,
         features_id=payload.features_id,
+        product_url=payload.product_url,
         display_order=payload.display_order,
         is_active=payload.is_active,
     )
@@ -99,8 +101,10 @@ async def update_product(
         description_en=payload.description_en,
         description_id=payload.description_id,
         icon=payload.icon,
+        image_url=payload.image_url,
         features_en=payload.features_en,
         features_id=payload.features_id,
+        product_url=payload.product_url,
         display_order=payload.display_order,
         is_active=payload.is_active,
     )

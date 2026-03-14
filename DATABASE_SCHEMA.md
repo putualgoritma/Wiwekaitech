@@ -36,6 +36,8 @@ CREATE TABLE products (
     icon VARCHAR(50),
     features_en JSON,
     features_id JSON,
+    image_url VARCHAR(500),
+    product_url VARCHAR(500),
     display_order INT DEFAULT 0,
     is_active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

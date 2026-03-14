@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
 from app.config import settings
-from app.database import engine, Base
+from app.database import engine, Base, SessionLocal
 from app.routers import products, projects, tutorials, blog, contact, auth
 from app.routers import admin_products, admin_projects, admin_tutorials, admin_blog, admin_users, admin_templates, admin_upload
+from app.services.auth_service import AuthService
 import os
 
 # Create database tables
@@ -19,6 +20,33 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc"
 )
+
+
+@app.middleware("http")
+async def admin_auth_redirect_middleware(request, call_next):
+    """Redirect unauthenticated admin page requests to login page."""
+    path = request.url.path
+
+    if path.startswith("/admin"):
+        public_paths = {"/admin/login", "/admin/logout", "/admin", "/admin/"}
+        if path not in public_paths:
+            token = request.cookies.get("access_token")
+            is_authenticated = False
+
+            if token:
+                user_data = AuthService.verify_jwt_token(token)
+                if user_data:
+                    db = SessionLocal()
+                    try:
+                        user = AuthService.get_user_by_id(db, user_data["user_id"])
+                        is_authenticated = bool(user and user.is_active)
+                    finally:
+                        db.close()
+
+            if not is_authenticated:
+                return RedirectResponse(url="/admin/login", status_code=302)
+
+    return await call_next(request)
 
 # Configure CORS
 app.add_middleware(

@@ -47,8 +47,10 @@ class ProductService:
         description_en: str,
         description_id: str,
         icon: Optional[str] = None,
+        image_url: Optional[str] = None,
         features_en: Optional[dict] = None,
         features_id: Optional[dict] = None,
+        product_url: Optional[str] = None,
         display_order: int = 0,
         is_active: bool = True,
     ) -> Tuple[bool, str, Optional[Product]]:
@@ -65,8 +67,10 @@ class ProductService:
             description_en=description_en,
             description_id=description_id,
             icon=icon,
+            image_url=image_url,
             features_en=features_en,
             features_id=features_id,
+            product_url=product_url,
             display_order=display_order,
             is_active=is_active,
         )
@@ -87,8 +91,10 @@ class ProductService:
         description_en: Optional[str] = None,
         description_id: Optional[str] = None,
         icon: Optional[str] = None,
+        image_url: Optional[str] = None,
         features_en: Optional[dict] = None,
         features_id: Optional[dict] = None,
+        product_url: Optional[str] = None,
         display_order: Optional[int] = None,
         is_active: Optional[bool] = None,
     ) -> Tuple[bool, str, Optional[Product]]:
@@ -116,10 +122,14 @@ class ProductService:
             product.description_id = description_id
         if icon is not None:
             product.icon = icon
+        if image_url is not None:
+            product.image_url = image_url
         if features_en is not None:
             product.features_en = features_en
         if features_id is not None:
             product.features_id = features_id
+        if product_url is not None:
+            product.product_url = product_url
         if display_order is not None:
             product.display_order = display_order
         if is_active is not None:
@@ -152,6 +162,7 @@ class ProductService:
             ),
             "slug": product.slug,
             "icon": product.icon,
+            "image_url": product.image_url,
             "product_url": product.product_url,
             "display_order": product.display_order
         }

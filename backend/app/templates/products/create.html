@@ -43,8 +43,32 @@
             <small>Icon class or name</small>
         </div>
         <div class="form-group">
+            <label for="product_url">Product URL:</label>
+            <input type="url" id="product_url" name="product_url" maxlength="500" placeholder="https://... or /products/...">
+            <small>Optional link destination for this product</small>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="image_url">Image URL:</label>
+            <input type="url" id="image_url" name="image_url" maxlength="500" placeholder="https://...">
+            <small>Optional product thumbnail/banner URL</small>
+        </div>
+        <div class="form-group">
             <label for="display_order">Display Order:</label>
             <input type="number" id="display_order" name="display_order" value="0" min="0">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="image_file">Upload Image:</label>
+        <input type="file" id="image_file" accept="image/*">
+        <small>Optional. Uploading will auto-fill Image URL</small>
+
+        <div id="image_preview" style="margin-top: 10px; display: none;">
+            <img id="preview_img" src="" alt="Preview" style="max-width: 300px; max-height: 200px; border: 1px solid #ddd; padding: 5px;">
+            <p id="upload_status" style="margin-top: 5px; font-size: 14px;"></p>
         </div>
     </div>
 
@@ -66,6 +90,54 @@
 <script>
 const form = document.getElementById('productForm');
 const messageDiv = document.getElementById('message');
+const imageFile = document.getElementById('image_file');
+const imagePreview = document.getElementById('image_preview');
+const previewImg = document.getElementById('preview_img');
+const uploadStatus = document.getElementById('upload_status');
+const imageUrlInput = document.getElementById('image_url');
+
+// Handle image file selection and upload
+imageFile.addEventListener('change', async function(e) {
+    const file = e.target.files[0];
+    if (!file) {
+        imagePreview.style.display = 'none';
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+        previewImg.src = evt.target.result;
+        imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+
+    uploadStatus.textContent = 'Uploading...';
+    uploadStatus.style.color = '#666';
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await fetch('/api/v1/admin/upload/product-image', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include'
+        });
+
+        const result = await response.json();
+        if (response.ok && result.success) {
+            imageUrlInput.value = result.data.url;
+            uploadStatus.textContent = '✓ Image uploaded successfully';
+            uploadStatus.style.color = '#28a745';
+        } else {
+            uploadStatus.textContent = '✗ Upload failed: ' + (result.detail || 'Unknown error');
+            uploadStatus.style.color = '#dc3545';
+        }
+    } catch (error) {
+        uploadStatus.textContent = '✗ Upload error: ' + error.message;
+        uploadStatus.style.color = '#dc3545';
+    }
+});
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -78,6 +150,8 @@ form.addEventListener('submit', async (e) => {
         description_en: document.getElementById('description_en').value,
         description_id: document.getElementById('description_id').value,
         icon: document.getElementById('icon').value || null,
+        image_url: imageUrlInput.value || null,
+        product_url: document.getElementById('product_url').value || null,
         display_order: parseInt(document.getElementById('display_order').value),
         is_active: document.getElementById('is_active').checked,
     };
